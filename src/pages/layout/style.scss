@@ -1,0 +1,67 @@
+.layout {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+header {
+  position: sticky;
+  top: 0;
+  min-height: 56px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 24px;
+  gap: 12px;
+  background: #ffffff;
+  box-shadow: inset 0px -1px 0px #f0f0f0;
+}
+header title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  display: flex;
+  align-items: center;
+  color: #8c8c8c;
+}
+header h1 {
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 110%;
+  /* identical to box height, or 40px */
+
+  display: flex;
+  align-items: center;
+
+  /* RTLS/6 */
+
+  color: #a85f0a;
+}
+.sideBar {
+  //   width: 64px;
+  //   grid-column: span 1 / span 1;
+  background-color: antiquewhite;
+  height: calc(100vh - 100px);
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 12px;
+    width: 240px;
+    height: 48px;
+    background: #ffd1d1;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    cursor: pointer;
+    &:hover {
+      background-color: #fdf1e2;
+      border-right: 8px solid #a85f0a;
+    }
+  }
+}

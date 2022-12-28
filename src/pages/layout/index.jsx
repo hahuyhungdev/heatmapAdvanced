@@ -1,6 +1,6 @@
-import { Link, Outlet } from "react-router-dom";
-import { IconDashboard, IconReport, IconTag, IconDevices } from "components/Icons";
-
+import clsx from "clsx";
+import { IconDashboard, IconDevices, IconReport, IconTag } from "components/Icons";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import "./style.scss";
 const dataNavigation = [
   {
@@ -30,19 +30,20 @@ const dataNavigation = [
   },
 ];
 export const Layout = () => {
+  const location = useLocation();
+  console.log(location.pathname);
   return (
     <div className="mainHome">
       <header className="header">
         <title>Monitoring Dashboard</title>
-        <h1 className="user">RTLS SYSTEM</h1>
+        <h1 className="rtls ">RTLS SYSTEM</h1>
       </header>
       <div className="layout">
         <div className="sideBar">
-          {/* <div className="navigation"> */}
           {dataNavigation.map((item) => (
-            <Link className="item" to={item.path} key={item.path}>
+            <Link className={clsx("item", { active: item.path === location.pathname })} to={item.path} key={item.path}>
               <div>{item.icon}</div>
-              <div>{item.name}</div>
+              <span>{item.name}</span>
             </Link>
           ))}
           {/* </div> */}

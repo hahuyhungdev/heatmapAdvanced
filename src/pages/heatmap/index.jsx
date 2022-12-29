@@ -1,5 +1,6 @@
-import h337 from "heatmap.js";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import h337 from 'heatmap.js';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { PropTypes } from 'prop-types';
 
 export const HeatMap = ({ usersData }) => {
   const [dataApp, setDataApp] = React.useState([]);
@@ -8,16 +9,16 @@ export const HeatMap = ({ usersData }) => {
   const testData = useMemo(() => [], []);
   const points = useRef({});
   const dataTest = useMemo(() => [], []);
-  console.log("dataTest", usersData.length);
+  console.log('dataTest', usersData.length);
   // if usersData.length < 1 then get data of usersData.username to dataTest
   if (usersData.length === 1) {
     // push all data of usersData.username to dataTest
     usersData.map((item) => {
-      console.log("item", item.date);
+      console.log('item', item.date);
       dataTest.push(item.username);
     });
   }
-  console.log("result", usersData.length);
+  console.log('result', usersData.length);
   console.log(dataTest);
   // console.log(typeGetValue === false ? "Get value" : "Stop get value");
   const handleActiveGetValue = () => {
@@ -25,21 +26,21 @@ export const HeatMap = ({ usersData }) => {
   };
   useEffect(() => {
     var heatmapInstance = h337.create({
-      container: document.querySelector(typeGetValue === false ? ".demo-wrapper" : ".heatmap"),
+      container: document.querySelector(typeGetValue === false ? '.demo-wrapper' : '.heatmap'),
       radius: 12,
       maxOpacity: 2.5,
       minOpacity: 0,
       blur: 0.75,
       height: 500,
     });
-    var demoWrapper = document.querySelector(".demo-wrapper");
-    var tooltip = document.querySelector(".tooltip");
-    var dataLocal = JSON.parse(localStorage.getItem("testData"));
+    var demoWrapper = document.querySelector('.demo-wrapper');
+    var tooltip = document.querySelector('.tooltip');
+    var dataLocal = JSON.parse(localStorage.getItem('testData'));
     var max = 0;
     var val = Math.floor(Math.random() * 100);
     function updateTooltip(x, y, value) {
       // + 15 for distance to cursor
-      var transform = "translate(" + (x + 15) + "px, " + (y + 15) + "px)";
+      var transform = 'translate(' + (x + 15) + 'px, ' + (y + 15) + 'px)';
       tooltip.style.MozTransform = transform; /* Firefox */
       tooltip.style.msTransform = transform; /* IE (9+) - note ms is lowercase */
       tooltip.style.OTransform = transform; /* Opera */
@@ -62,7 +63,7 @@ export const HeatMap = ({ usersData }) => {
 
         // save test data to local storage limit 100
         if (testData.length < 300) {
-          localStorage.setItem("testData", JSON.stringify(testData));
+          localStorage.setItem('testData', JSON.stringify(testData));
         }
         if (points.current !== null && points.current !== undefined) {
           // client.publish("dataMqtt", JSON.stringify(points.current));
@@ -78,11 +79,11 @@ export const HeatMap = ({ usersData }) => {
         });
 
         updateTooltip(x, y, value);
-        tooltip.style.display = "block";
+        tooltip.style.display = 'block';
       }
     };
     demoWrapper.onmouseout = function () {
-      tooltip.style.display = "none";
+      tooltip.style.display = 'none';
     };
 
     heatmapInstance.setData({
@@ -97,7 +98,7 @@ export const HeatMap = ({ usersData }) => {
   // });
   // handle reset data
   const handleResetData = () => {
-    localStorage.removeItem("testData");
+    localStorage.removeItem('testData');
     window.location.reload();
   };
   return (
@@ -110,10 +111,10 @@ export const HeatMap = ({ usersData }) => {
       <div
         className="function"
         style={{
-          display: "flex",
-          gap: "10px",
-          justifyContent: "center",
-          alignItems: "center",
+          display: 'flex',
+          gap: '10px',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
         <button
@@ -125,10 +126,14 @@ export const HeatMap = ({ usersData }) => {
           Reset Data
         </button>
         <button className="activeGetvalue" onClick={handleActiveGetValue}>
-          {typeGetValue === false ? "Get value" : "Stop get value"}
+          {typeGetValue === false ? 'Get value' : 'Stop get value'}
         </button>
       </div>
     </div>
   );
 };
+HeatMap.propTypes = {
+  usersData: PropTypes.array,
+};
+
 export default HeatMap;

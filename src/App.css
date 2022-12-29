@@ -89,11 +89,9 @@ body {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* custon antd css */
+.antCustom :where(.css-dev-only-do-not-override-acm2ia).ant-btn-default:not(:disabled):hover {
+  color: #ffffff;
+  border-color: #c17115;
 }
+/* end custon antd css */

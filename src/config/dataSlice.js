@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   data: [
@@ -158,7 +158,7 @@ const initialState = {
 };
 
 const dataSlice = createSlice({
-  name: "data",
+  name: 'data',
   initialState,
   reducers: {
     getData: (state) => {

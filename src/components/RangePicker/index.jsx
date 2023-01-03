@@ -1,10 +1,11 @@
-import { Button, DatePicker, Form, Input } from "antd";
-import moment from "moment";
-import React, { memo } from "react";
+import { Button, DatePicker, Form } from 'antd';
+import moment from 'moment';
+import { memo } from 'react';
+import { PropTypes } from 'prop-types';
 
 export const RangePicker = memo(({ dates, handleChange }) => {
   return (
-    <div className="TimeAgo" style={{ margin: "20px" }}>
+    <div className="TimeAgo" style={{ margin: '20px' }}>
       <Form
         autoComplete="off"
         wrapperCol={{ span: 14 }}
@@ -20,13 +21,13 @@ export const RangePicker = memo(({ dates, handleChange }) => {
         <Form.Item wrapperCol={{ span: 14 }} name="RangeDate" label="input timestamp" hasFeedback>
           <DatePicker.RangePicker
             // onChange={handleChange}
-            showTime={{ format: "HH" }}
+            showTime={{ format: 'HH' }}
             format="YYYY-MM-DD HH"
-            placeholder={["Start Date", "End Date"]}
-            disabledDate={(current) => current && current > moment().endOf("day")}
+            placeholder={['Start Date', 'End Date']}
+            disabledDate={(current) => current && current > moment().endOf('day')}
           />
         </Form.Item>
-        <Form.Item wrapperCol={{ span: 4 }} style={{ display: "inline-flex", minWidth: "80px" }}>
+        <Form.Item wrapperCol={{ span: 4 }} style={{ display: 'inline-flex', minWidth: '80px' }}>
           <Button block type="primary" htmlType="submit">
             Submit
           </Button>
@@ -35,5 +36,8 @@ export const RangePicker = memo(({ dates, handleChange }) => {
     </div>
   );
 });
-
+RangePicker.propTypes = {
+  dates: PropTypes.array,
+  handleChange: PropTypes.func,
+};
 export default RangePicker;

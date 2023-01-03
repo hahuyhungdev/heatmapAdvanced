@@ -1,6 +1,6 @@
-import useEventListener from "@hooks/useEventListener";
-import { useIsomorphicLayoutEffect } from "@hooks/useIsomorphicLayoutEffect";
-import { useEffect, useState } from "react";
+import useEventListener from '@hooks/useEventListener';
+import { useIsomorphicLayoutEffect } from '@hooks/useIsomorphicLayoutEffect';
+import { useEffect, useState } from 'react';
 
 export function useCheckMobileScreen() {
   const [windowSize, setWindowSize] = useState({
@@ -20,12 +20,11 @@ export function useCheckMobileScreen() {
     else setIsMobile(false);
   }, [windowSize]);
 
-  useEventListener("resize", handleSize);
+  useEventListener('resize', handleSize);
 
   // Set size at the first client-side load
   useIsomorphicLayoutEffect(() => {
     handleSize();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {

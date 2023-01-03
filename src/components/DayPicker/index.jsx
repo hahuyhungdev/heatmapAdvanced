@@ -1,7 +1,7 @@
-import { DatePicker } from "antd";
-import moment from "moment";
-import React, { memo } from "react";
-const Today = new Date().toLocaleDateString("en-CA");
+import { DatePicker } from 'antd';
+import moment from 'moment';
+import React, { memo } from 'react';
+import { PropTypes } from 'prop-types';
 
 const DayPicker = memo(({ handleChange, date }) => {
   return (
@@ -9,15 +9,15 @@ const DayPicker = memo(({ handleChange, date }) => {
       <DatePicker
         onChange={handleChange}
         format="YYYY-MM-DD"
-        placeholder={["Start Date", "End Date"]}
-        disabledDate={(current) => current && current > moment().endOf("day")}
+        placeholder={['Start Date', 'End Date']}
+        disabledDate={(current) => current && current > moment().endOf('day')}
       />
       <p
         style={{
-          color: "yellow",
-          fontSize: "20px",
-          fontWeight: "bold",
-          marginTop: "10px",
+          color: 'yellow',
+          fontSize: '20px',
+          fontWeight: 'bold',
+          marginTop: '10px',
         }}
       >
         {date}
@@ -25,4 +25,9 @@ const DayPicker = memo(({ handleChange, date }) => {
     </>
   );
 });
+
+DayPicker.propTypes = {
+  handleChange: PropTypes.func,
+  date: PropTypes.string,
+};
 export default DayPicker;

@@ -1,22 +1,37 @@
 import { Button, Space } from 'antd';
-// import { ButtonCustom } from 'components';
-import { ButtonCustom, Page, Popup } from 'components';
 import { Pagination } from 'antd';
-import React, { useState } from 'react';
+import { ButtonCustom, Page, Popup } from 'components';
+import { useState } from 'react';
+import { IconPerson, IconForklift, IconGroup } from 'components/Icons';
 import './style.scss';
 export const Devices = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  console.log(isModalVisible);
   const showPopup = () => {
+    console.log('showPopup');
     setIsModalVisible(true);
   };
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
   const handleCancel = () => {
+    console.log('Cancel');
     setIsModalVisible(false);
   };
+  const dataOptions = [
+    {
+      value: 'hahuyhung',
+      label: 'Forklift   ',
+      url_Image: <IconForklift />,
+    },
+    {
+      value: 'hahuyhung1',
+      label: 'Person',
+      url_Image: <IconPerson />,
+    },
+    {
+      value: 'IconGroup',
+      label: 'IconGroup',
+      url_Image: <IconGroup />,
+    },
+  ];
   return (
     <div className="devices">
       <title>Devices</title>
@@ -26,10 +41,21 @@ export const Devices = () => {
           marginTop: '10px',
         }}
       >
-        <span> bấm zô đây để bật popup</span>
+        <span> bấm zô đây để create popup</span>
         <ButtonCustom onClick={showPopup}>huyhung</ButtonCustom>
+        <Popup options={dataOptions} title="Create Object" open={isModalVisible} onCancel={handleCancel} />
         <br />
-        <Popup title="Create Object" open={isModalVisible} onOk={handleOk} onCancel={handleCancel} />
+        <span> bấm zô đây để edit popup</span>
+        <ButtonCustom
+          style={{
+            backgroundColor: '#e66363',
+          }}
+          onClick={showPopup}
+        >
+          edit
+        </ButtonCustom>
+        <Popup options={dataOptions} title="Edit Object" open={isModalVisible} onCancel={handleCancel} />
+        <br />
 
         <Page total={500} current={6} />
         <br />

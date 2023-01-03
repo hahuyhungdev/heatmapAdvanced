@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import { memo } from 'react';
 
 import './style.scss';
-export const Popup = memo(({ className, title, open, onCancel, options }) => {
+export const ModalAlert = memo(({ className, title, open, onCancel, options }) => {
   const [form] = Form.useForm();
   const handleOke = (values) => {
     console.log('Success:', values);
@@ -71,7 +71,7 @@ export const Popup = memo(({ className, title, open, onCancel, options }) => {
     </Modal>
   );
 });
-Popup.propTypes = {
+ModalAlert.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
   open: PropTypes.bool,
@@ -80,4 +80,4 @@ Popup.propTypes = {
   options: PropTypes.array,
 };
 
-export default Popup;
+export default ModalAlert;

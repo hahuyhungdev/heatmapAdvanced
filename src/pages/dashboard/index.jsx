@@ -1,6 +1,7 @@
 import React from 'react';
-import './style.scss';
 import Background from 'assets/images/background.png';
+import './style.scss';
+
 export const Dashboard = () => {
   return (
     <div className="dashboard">

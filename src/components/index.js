@@ -7,3 +7,5 @@ export * from './Select';
 export * from './Error';
 export * from './Icons';
 export * from './Button';
+export * from './Pagination';
+export * from './Popup';

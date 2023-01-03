@@ -1,8 +1,22 @@
 import { Button, Space } from 'antd';
-import { ButtonCustom } from 'components';
-
+// import { ButtonCustom } from 'components';
+import { ButtonCustom, Page, Popup } from 'components';
+import { Pagination } from 'antd';
+import React, { useState } from 'react';
 import './style.scss';
 export const Devices = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showPopup = () => {
+    setIsModalVisible(true);
+  };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   return (
     <div className="devices">
       <title>Devices</title>
@@ -12,8 +26,14 @@ export const Devices = () => {
           marginTop: '10px',
         }}
       >
-        <ButtonCustom>huyhung</ButtonCustom>
-        <ButtonCustom loading>huyhung</ButtonCustom>
+        <span> bấm zô đây để bật popup</span>
+        <ButtonCustom onClick={showPopup}>huyhung</ButtonCustom>
+        <br />
+        <Popup title="Create Object" open={isModalVisible} onOk={handleOk} onCancel={handleCancel} />
+
+        <Page total={500} current={6} />
+        <br />
+        <Pagination defaultCurrent={6} total={500} />
         <h1>Hello world!</h1>
         <Space wrap>
           <Button type="primary" danger>

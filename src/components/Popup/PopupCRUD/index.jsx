@@ -1,10 +1,10 @@
-import { Button, Form, Input, Modal, Space } from 'antd';
-import { ButtonCustom, SelectOption } from 'components';
+import { Form, Input, Modal, Space } from 'antd';
+import { FooterModal, SelectOption } from 'components';
 import { PropTypes } from 'prop-types';
 import { memo } from 'react';
 
 import './style.scss';
-export const Popup = memo(({ title, options, onCancel, onOpen }) => {
+export const PopupCRUD = memo(({ title, options, onCancel, onOpen, onFinish }) => {
   const [form] = Form.useForm();
   const handleOke = (values) => {
     console.log('Success:', values);
@@ -17,16 +17,7 @@ export const Popup = memo(({ title, options, onCancel, onOpen }) => {
         className={'modalStyle'}
         onOk={form.submit}
         onCancel={onCancel}
-        footer={[
-          <div key="footerCutom" className="containFooter">
-            <Button key={'back'} style={{ marginTop: '10px' }} onClick={onCancel}>
-              Cancel
-            </Button>
-            <ButtonCustom type="primary" style={{ marginTop: '10px' }} htmlType="submit" onClick={form.submit}>
-              Save
-            </ButtonCustom>
-          </div>,
-        ]}
+        footer={[<FooterModal key="footerCutom" onCancel={onCancel} onFinish={onFinish} />]}
       >
         <Form
           form={form}
@@ -62,7 +53,7 @@ export const Popup = memo(({ title, options, onCancel, onOpen }) => {
   );
 });
 
-Popup.propTypes = {
+PopupCRUD.propTypes = {
   title: PropTypes.string,
   onOpen: PropTypes.bool,
   onFinish: PropTypes.func,
@@ -70,4 +61,4 @@ Popup.propTypes = {
   options: PropTypes.array,
 };
 
-export default Popup;
+export default PopupCRUD;

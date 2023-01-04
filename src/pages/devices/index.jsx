@@ -1,27 +1,30 @@
 import { Button, Pagination, Space } from 'antd';
-import { ButtonCustom, Page, Popup, ModalAlert } from 'components';
+import { ButtonCustom, Page, PopupCRUD, ModalAlert, PopupMap } from 'components';
 import { IconPerson, IconForklift, IconGroup } from 'components/Icons';
+
 import { useState } from 'react';
 import './style.scss';
 export const Devices = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalEdit, setIsModalEdit] = useState(false);
   const [isModalConfirm, setIsModalConfirm] = useState(false);
+  const [isModalMap, setIsModalMap] = useState(false);
 
   const [count, setCount] = useState(0);
 
   const showPopup = () => {
     console.log('showPopup');
     setIsModalVisible(true);
-    setIsModalEdit(true);
+    // setIsModalEdit(true);
+    // setIsModalMap(true);
   };
 
   const handleCancel = () => {
     console.log('Cancel');
     setIsModalVisible(false);
-    console.log('isModalVisible', isModalConfirm);
     setIsModalConfirm(false);
     setIsModalEdit(false);
+    setIsModalMap(false);
   };
 
   const dataOptions = [
@@ -56,7 +59,23 @@ export const Devices = () => {
           marginTop: '10px',
         }}
       >
-        {/* use ModalAlert */}
+        <ButtonCustom
+          onClick={() => {
+            setIsModalMap(true);
+          }}
+        >
+          Select file
+        </ButtonCustom>
+        {isModalMap && <PopupMap title="Upload Map" onCancel={handleCancel} onOpen={isModalMap} />}
+        {isModalConfirm && (
+          <ModalAlert
+            onCancel={handleCancel}
+            title="Are you sure delete this device?"
+            content="You can’t undo this action"
+            onOpen={isModalConfirm}
+          />
+        )}
+        <br />
         <ButtonCustom onClick={() => setIsModalConfirm(true)}>confirm</ButtonCustom>
         {isModalConfirm && (
           <ModalAlert
@@ -69,7 +88,7 @@ export const Devices = () => {
         <span> bấm zô đây để create popup</span>
         <ButtonCustom onClick={showPopup}>create</ButtonCustom>
         {isModalVisible && (
-          <Popup title="Create Object" options={dataOptions} onCancel={handleCancel} onOpen={isModalVisible} />
+          <PopupCRUD title="Create Object" options={dataOptions} onCancel={handleCancel} onOpen={isModalVisible} />
         )}
         <br />
         <span> bấm zô đây để edit popup</span>
@@ -77,12 +96,14 @@ export const Devices = () => {
           style={{
             backgroundColor: '#e66363',
           }}
-          onClick={showPopup}
+          onClick={() => {
+            setIsModalEdit(true);
+          }}
         >
           edit
         </ButtonCustom>
         {isModalEdit && (
-          <Popup title="Edit Object" options={dataOptions} onCancel={handleCancel} onOpen={isModalEdit} />
+          <PopupCRUD title="Edit Object" options={dataOptions} onCancel={handleCancel} onOpen={isModalEdit} />
         )}
         <br />
         <ButtonCustom> test</ButtonCustom>

@@ -10,4 +10,5 @@ export * from './Button';
 export * from './Pagination';
 export * from './Popup';
 export * from './Modal';
+export * from './FooterModal';
 export * from './Dropdown';

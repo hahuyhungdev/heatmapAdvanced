@@ -1,7 +1,9 @@
 import { NotFound } from 'components';
 import { Dashboard, Devices, Home, Layout, Report, Tags } from 'pages';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import 'antd/dist/reset.css';
+// import 'antd/dist/reset.css';
+// import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
 import './App.css';
 
 function App() {

@@ -6,17 +6,22 @@ import './style.scss';
 export const Devices = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalEdit, setIsModalEdit] = useState(false);
+  const [isModalConfirm, setIsModalConfirm] = useState(false);
 
   const [count, setCount] = useState(0);
 
   const showPopup = () => {
     console.log('showPopup');
     setIsModalVisible(true);
+    setIsModalEdit(true);
   };
 
   const handleCancel = () => {
     console.log('Cancel');
     setIsModalVisible(false);
+    console.log('isModalVisible', isModalConfirm);
+    setIsModalConfirm(false);
+    setIsModalEdit(false);
   };
 
   const dataOptions = [
@@ -52,9 +57,17 @@ export const Devices = () => {
         }}
       >
         {/* use ModalAlert */}
-        <ButtonCustom onClick={() => ModalAlert('error', 'This is an error message')}>Error</ButtonCustom>
+        <ButtonCustom onClick={() => setIsModalConfirm(true)}>confirm</ButtonCustom>
+        {isModalConfirm && (
+          <ModalAlert
+            onCancel={handleCancel}
+            title="Are you sure delete this device?"
+            content="You can’t undo this action"
+            onOpen={isModalConfirm}
+          />
+        )}
         <span> bấm zô đây để create popup</span>
-        <ButtonCustom onClick={showPopup}>huyhung</ButtonCustom>
+        <ButtonCustom onClick={showPopup}>create</ButtonCustom>
         {isModalVisible && (
           <Popup title="Create Object" options={dataOptions} onCancel={handleCancel} onOpen={isModalVisible} />
         )}
@@ -64,19 +77,15 @@ export const Devices = () => {
           style={{
             backgroundColor: '#e66363',
           }}
-          onClick={() => setIsModalEdit(true)}
+          onClick={showPopup}
         >
           edit
         </ButtonCustom>
         {isModalEdit && (
-          <Popup
-            title="Edit Object"
-            options={dataOptions}
-            onCancel={() => setIsModalEdit(false)}
-            onOpen={isModalEdit}
-          />
+          <Popup title="Edit Object" options={dataOptions} onCancel={handleCancel} onOpen={isModalEdit} />
         )}
         <br />
+        <ButtonCustom> test</ButtonCustom>
         <Page total={500} current={6} />
         <br />
         <Pagination defaultCurrent={6} total={500} />

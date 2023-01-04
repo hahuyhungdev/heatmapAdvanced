@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import { memo } from 'react';
 
 import './style.scss';
-export const Popup = memo(({ className, title, options, onCancel, onOpen }) => {
+export const Popup = memo(({ title, options, onCancel, onOpen }) => {
   const [form] = Form.useForm();
   const handleOke = (values) => {
     console.log('Success:', values);
@@ -14,18 +14,11 @@ export const Popup = memo(({ className, title, options, onCancel, onOpen }) => {
       <Modal
         title={title}
         open={onOpen}
-        className={('modalStyle', className)}
+        className={'modalStyle'}
         onOk={form.submit}
+        onCancel={onCancel}
         footer={[
-          <div
-            key="footerCutom"
-            style={{
-              display: 'flex',
-              marginRight: '24px',
-              justifyContent: 'flex-end',
-              gap: '10px',
-            }}
-          >
+          <div key="footerCutom" className="containFooter">
             <Button key={'back'} style={{ marginTop: '10px' }} onClick={onCancel}>
               Cancel
             </Button>
@@ -70,7 +63,6 @@ export const Popup = memo(({ className, title, options, onCancel, onOpen }) => {
 });
 
 Popup.propTypes = {
-  className: PropTypes.string,
   title: PropTypes.string,
   onOpen: PropTypes.bool,
   onFinish: PropTypes.func,

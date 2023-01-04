@@ -1,20 +1,24 @@
-import { Button, Space } from 'antd';
-import { Pagination } from 'antd';
-import { ButtonCustom, Page, Popup } from 'components';
-import { useState } from 'react';
+import { Button, Pagination, Space } from 'antd';
+import { ButtonCustom, Page, Popup, ModalAlert } from 'components';
 import { IconPerson, IconForklift, IconGroup } from 'components/Icons';
+import { useState } from 'react';
 import './style.scss';
 export const Devices = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  console.log(isModalVisible);
+  const [isModalEdit, setIsModalEdit] = useState(false);
+
+  const [count, setCount] = useState(0);
+
   const showPopup = () => {
     console.log('showPopup');
     setIsModalVisible(true);
   };
+
   const handleCancel = () => {
     console.log('Cancel');
     setIsModalVisible(false);
   };
+
   const dataOptions = [
     {
       value: 'hahuyhung',
@@ -32,6 +36,12 @@ export const Devices = () => {
       url_Image: <IconGroup />,
     },
   ];
+
+  const increaseCount = () => {
+    console.log('increaseCount');
+    setCount(count + 1);
+  };
+
   return (
     <div className="devices">
       <title>Devices</title>
@@ -41,28 +51,38 @@ export const Devices = () => {
           marginTop: '10px',
         }}
       >
+        {/* use ModalAlert */}
+        <ButtonCustom onClick={() => ModalAlert('error', 'This is an error message')}>Error</ButtonCustom>
         <span> bấm zô đây để create popup</span>
         <ButtonCustom onClick={showPopup}>huyhung</ButtonCustom>
-        <Popup options={dataOptions} title="Create Object" open={isModalVisible} onCancel={handleCancel} />
+        {isModalVisible && (
+          <Popup title="Create Object" options={dataOptions} onCancel={handleCancel} onOpen={isModalVisible} />
+        )}
         <br />
         <span> bấm zô đây để edit popup</span>
         <ButtonCustom
           style={{
             backgroundColor: '#e66363',
           }}
-          onClick={showPopup}
+          onClick={() => setIsModalEdit(true)}
         >
           edit
         </ButtonCustom>
-        <Popup options={dataOptions} title="Edit Object" open={isModalVisible} onCancel={handleCancel} />
+        {isModalEdit && (
+          <Popup
+            title="Edit Object"
+            options={dataOptions}
+            onCancel={() => setIsModalEdit(false)}
+            onOpen={isModalEdit}
+          />
+        )}
         <br />
-
         <Page total={500} current={6} />
         <br />
         <Pagination defaultCurrent={6} total={500} />
         <h1>Hello world!</h1>
         <Space wrap>
-          <Button type="primary" danger>
+          <Button type="primary" danger onClick={increaseCount}>
             Primary
           </Button>
           <Button danger>Default</Button>

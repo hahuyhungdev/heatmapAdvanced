@@ -2,7 +2,7 @@
 import React, { useCallback } from 'react';
 import moment from 'moment';
 import { useState } from 'react';
-import { Card, RangePicker, SelectOptions, ShowData, TimeAgo } from 'components';
+import { Card, RangePicker, SelectOptionsHeatpmap, ShowData, TimeAgo } from 'components';
 // import usersData from "data/userData.json";
 import { getDataSelector } from 'config/dataSlice';
 
@@ -54,7 +54,7 @@ export function Home() {
   return (
     <div className="mainHomeTest">
       <h2>Start editing to see some magic happen!</h2>
-      <SelectOptions valuesSelect={valuesSelect} />
+      <SelectOptionsHeatpmap valuesSelect={valuesSelect} />
       <TimeAgo />
       {/* <RangePicker handleChange={handleChange} dates={dates} /> */}
 

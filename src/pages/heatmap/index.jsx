@@ -1,6 +1,6 @@
 import h337 from 'heatmap.js';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { PropTypes } from 'prop-types';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 export const HeatMap = ({ usersData }) => {
   const [dataApp, setDataApp] = React.useState([]);

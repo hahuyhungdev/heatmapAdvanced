@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 // import { memo } from 'react';
+import './style.scss';
+
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Modal, Upload } from 'antd';
-import { FooterModal } from 'components';
-import { useState } from 'react';
-
 import { message } from 'antd';
+import { FooterModal } from 'components';
 import { PropTypes } from 'prop-types';
-import './style.scss';
+import { useState } from 'react';
 
 export const PopupMap = ({ onFinish, onOpen, onCancel }) => {
   const [selectedFile, setSelectedFile] = useState(null);

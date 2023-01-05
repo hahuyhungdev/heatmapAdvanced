@@ -1,5 +1,6 @@
-import React from 'react';
 import './style.scss';
+
+import React from 'react';
 export const Tags = () => {
   return (
     <div className="tags">

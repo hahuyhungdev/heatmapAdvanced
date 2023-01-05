@@ -1,9 +1,9 @@
+import './style.scss';
+
 import { Form, Input, Modal, Space } from 'antd';
 import { FooterModal, SelectOption } from 'components';
 import { PropTypes } from 'prop-types';
 import { memo } from 'react';
-
-import './style.scss';
 export const PopupCRUD = memo(({ title, options, onCancel, onOpen, onFinish }) => {
   const [form] = Form.useForm();
   const handleOke = (values) => {

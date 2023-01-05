@@ -1,7 +1,7 @@
 import { Button, DatePicker, Form } from 'antd';
 import moment from 'moment';
-import { memo } from 'react';
 import { PropTypes } from 'prop-types';
+import { memo } from 'react';
 
 export const RangePicker = memo(({ dates, handleChange }) => {
   return (

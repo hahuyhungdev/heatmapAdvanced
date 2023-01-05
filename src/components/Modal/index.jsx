@@ -1,9 +1,10 @@
 // import { memo } from 'react';
+import './style.scss';
+
 import { Modal } from 'antd';
 import { IconWarning } from 'components';
-import { PropTypes } from 'prop-types';
 import { FooterModal } from 'components';
-import './style.scss';
+import { PropTypes } from 'prop-types';
 
 export const ModalAlert = ({ title, content, onFinish, onOpen, onCancel }) => {
   return (

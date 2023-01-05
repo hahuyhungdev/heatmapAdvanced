@@ -1,9 +1,9 @@
-import { Button, Pagination, Space } from 'antd';
-import { ButtonCustom, Page, PopupCRUD, ModalAlert, PopupMap } from 'components';
-import { IconPerson, IconForklift, IconGroup } from 'components/Icons';
-
-import { useState } from 'react';
 import './style.scss';
+
+import { Button, Pagination, Space } from 'antd';
+import { ButtonCustom, ModalAlert, Page, PopupCRUD, PopupMap } from 'components';
+import { IconForklift, IconGroup, IconPerson } from 'components/Icons';
+import { useState } from 'react';
 export const Devices = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalEdit, setIsModalEdit] = useState(false);

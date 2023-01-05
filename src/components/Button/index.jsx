@@ -1,9 +1,9 @@
+import './style.scss';
+
 import { Button } from 'antd';
 import clsx from 'clsx';
 import { PropTypes } from 'prop-types';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-
-import './style.scss';
 
 export const ButtonCustom = ({ className, loading = false, children, disabled = false, ...restProps }) => {
   return (

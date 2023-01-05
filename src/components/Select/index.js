@@ -1,8 +1,8 @@
-import React, { memo } from 'react';
 import { Select } from 'antd';
 import moment from 'moment';
 // import { useState } from 'react';
 import { PropTypes } from 'prop-types';
+import React, { memo } from 'react';
 
 export const SelectOptionsHeatpmap = memo(({ valuesSelect }) => {
   // const valuesSelect = (value) => {

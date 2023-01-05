@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React, { useCallback } from 'react';
-import moment from 'moment';
-import { useState } from 'react';
 import { Card, RangePicker, SelectOptionsHeatpmap, ShowData, TimeAgo } from 'components';
 // import usersData from "data/userData.json";
 import { getDataSelector } from 'config/dataSlice';
-
+import moment from 'moment';
+import React, { useCallback } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
+
 import { HeatMap } from '..';
 
 export function Home() {

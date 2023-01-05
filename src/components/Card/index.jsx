@@ -1,5 +1,5 @@
-import React, { memo } from 'react';
 import { PropTypes } from 'prop-types';
+import React, { memo } from 'react';
 
 export const Card = ({ valueIncrease, handleIncrease }) => {
   // console.log("Card");

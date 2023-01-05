@@ -1,7 +1,8 @@
+import './style.scss';
+
 import clsx from 'clsx';
 import { IconDashboard, IconDevices, IconReport, IconTag } from 'components/Icons';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import './style.scss';
 
 const dataNavigation = [
   {

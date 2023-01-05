@@ -1,7 +1,7 @@
 import { Pagination } from 'antd';
-import React from 'react';
-import { PropTypes } from 'prop-types';
 import clsx from 'clsx';
+import { PropTypes } from 'prop-types';
+import React from 'react';
 export function Page({ className, pageSize = 10, current, total, onChange }) {
   const _onChange = (page, pageSize) => {
     onChange?.(page, pageSize);

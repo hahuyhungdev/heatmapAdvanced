@@ -1,11 +1,14 @@
 import './style.scss';
 
 import { Button, Pagination, Space } from 'antd';
-import { ButtonCustom, ModalAlert, Page, PopupCRUD, PopupMap } from 'components';
+import { ButtonCustom, ModalAlert, Page } from 'components';
 import { IconForklift, IconGroup, IconPerson } from 'components/Icons';
+import { PopupDevice, PopupMap, PopupTag } from 'components/Popup';
 import { useState } from 'react';
+import React from 'react';
 export const Devices = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModaTag, setIsModalTag] = useState(false);
   const [isModalEdit, setIsModalEdit] = useState(false);
   const [isModalConfirm, setIsModalConfirm] = useState(false);
   const [isModalMap, setIsModalMap] = useState(false);
@@ -15,8 +18,6 @@ export const Devices = () => {
   const showPopup = () => {
     console.log('showPopup');
     setIsModalVisible(true);
-    // setIsModalEdit(true);
-    // setIsModalMap(true);
   };
 
   const handleCancel = () => {
@@ -25,6 +26,7 @@ export const Devices = () => {
     setIsModalConfirm(false);
     setIsModalEdit(false);
     setIsModalMap(false);
+    setIsModalTag(false);
   };
 
   const dataOptions = [
@@ -57,55 +59,67 @@ export const Devices = () => {
         style={{
           textAlign: 'center',
           marginTop: '10px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
         }}
       >
-        <ButtonCustom
-          onClick={() => {
-            setIsModalMap(true);
-          }}
-        >
-          Select file
-        </ButtonCustom>
-        {isModalMap && <PopupMap title="Upload Map" onCancel={handleCancel} onOpen={isModalMap} />}
-        {isModalConfirm && (
-          <ModalAlert
-            onCancel={handleCancel}
-            title="Are you sure delete this device?"
-            content="You can’t undo this action"
-            onOpen={isModalConfirm}
-          />
-        )}
-        <br />
-        <ButtonCustom onClick={() => setIsModalConfirm(true)}>confirm</ButtonCustom>
-        {isModalConfirm && (
-          <ModalAlert
-            onCancel={handleCancel}
-            title="Are you sure delete this device?"
-            content="You can’t undo this action"
-            onOpen={isModalConfirm}
-          />
-        )}
-        <span> bấm zô đây để create popup</span>
-        <ButtonCustom onClick={showPopup}>create</ButtonCustom>
-        {isModalVisible && (
-          <PopupCRUD title="Create Object" options={dataOptions} onCancel={handleCancel} onOpen={isModalVisible} />
-        )}
-        <br />
-        <span> bấm zô đây để edit popup</span>
-        <ButtonCustom
-          style={{
-            backgroundColor: '#e66363',
-          }}
-          onClick={() => {
-            setIsModalEdit(true);
-          }}
-        >
-          edit
-        </ButtonCustom>
-        {isModalEdit && (
-          <PopupCRUD title="Edit Object" options={dataOptions} onCancel={handleCancel} onOpen={isModalEdit} />
-        )}
-        <br />
+        <div className="sectionDevice" style={{ backgroundColor: 'pink' }}>
+          <h1>Devices Management</h1>
+          <ButtonCustom
+            onClick={() => {
+              setIsModalMap(true);
+            }}
+          >
+            Select file
+          </ButtonCustom>
+          {isModalMap && <PopupMap title="Upload Map" onCancel={handleCancel} onOpen={isModalMap} />}
+          {isModalConfirm && (
+            <ModalAlert
+              onCancel={handleCancel}
+              title="Are you sure delete this device?"
+              content="You can’t undo this action"
+              onOpen={isModalConfirm}
+            />
+          )}
+          <br />
+          <ButtonCustom onClick={() => setIsModalConfirm(true)}>confirm</ButtonCustom>
+          {isModalConfirm && (
+            <ModalAlert
+              onCancel={handleCancel}
+              title="Are you sure delete this device?"
+              content="You can’t undo this action"
+              onOpen={isModalConfirm}
+            />
+          )}
+          <span> bấm zô đây để create popup</span>
+          <ButtonCustom onClick={showPopup}>create</ButtonCustom>
+          {isModalVisible && (
+            <PopupDevice title="Create Object" options={dataOptions} onCancel={handleCancel} onOpen={isModalVisible} />
+          )}
+          <br />
+          <span> bấm zô đây để edit popup</span>
+          <ButtonCustom
+            style={{
+              backgroundColor: '#e66363',
+            }}
+            onClick={() => {
+              setIsModalEdit(true);
+            }}
+          >
+            edit
+          </ButtonCustom>
+          {isModalEdit && (
+            <PopupDevice title="Edit Object" options={dataOptions} onCancel={handleCancel} onOpen={isModalEdit} />
+          )}
+        </div>
+        <div className="Tag" style={{ marginTop: '10px', background: '#ff9090' }}>
+          <h1>Tags Management</h1>
+          <span> bấm zô đây để create Tags</span>
+          <ButtonCustom onClick={() => setIsModalTag(true)}>create</ButtonCustom>
+          {isModaTag && <PopupTag title="Create Tag" onCancel={handleCancel} onOpen={isModaTag} />}
+          <br />
+        </div>
         <ButtonCustom> test</ButtonCustom>
         <Page total={500} current={6} />
         <br />

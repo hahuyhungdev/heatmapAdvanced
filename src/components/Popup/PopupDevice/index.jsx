@@ -2,29 +2,33 @@ import './style.scss';
 
 import { Form, Input, Modal, Space } from 'antd';
 import { FooterModal, SelectOption } from 'components';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import { memo } from 'react';
-export const PopupCRUD = memo(({ title, options, onCancel, onOpen, onFinish }) => {
+import { toast } from 'react-toastify';
+export const PopupDevice = memo(({ title, options, onCancel, onOpen }) => {
   const [form] = Form.useForm();
-  const handleOke = (values) => {
+  const onFinish = (values) => {
     console.log('Success:', values);
+    toast.success('Success');
   };
   return (
     <div className="antCustom">
       <Modal
         title={title}
         open={onOpen}
+        centered
         className={'modalStyle'}
         onOk={form.submit}
         onCancel={onCancel}
-        footer={[<FooterModal key="footerCutom" onCancel={onCancel} onFinish={onFinish} />]}
+        footer={[<FooterModal key="footerCutom" onCancel={onCancel} onFinish={form.submit} />]}
       >
         <Form
           form={form}
           autoComplete="off"
-          onFinish={handleOke}
+          onFinish={onFinish}
           onFinishFailed={(error) => {
-            console.log({ error });
+            console.log(error);
+            toast.error(error.errorFields[0].errors[0]);
           }}
           colon={false}
         >
@@ -53,7 +57,7 @@ export const PopupCRUD = memo(({ title, options, onCancel, onOpen, onFinish }) =
   );
 });
 
-PopupCRUD.propTypes = {
+PopupDevice.propTypes = {
   title: PropTypes.string,
   onOpen: PropTypes.bool,
   onFinish: PropTypes.func,
@@ -61,4 +65,4 @@ PopupCRUD.propTypes = {
   options: PropTypes.array,
 };
 
-export default PopupCRUD;
+export default PopupDevice;

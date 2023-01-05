@@ -4,7 +4,7 @@ import './style.scss';
 import { Modal } from 'antd';
 import { IconWarning } from 'components';
 import { FooterModal } from 'components';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 
 export const ModalAlert = ({ title, content, onFinish, onOpen, onCancel }) => {
   return (
@@ -13,6 +13,7 @@ export const ModalAlert = ({ title, content, onFinish, onOpen, onCancel }) => {
         open={onOpen}
         onOk={onFinish}
         onCancel={onCancel}
+        centered
         footer={[<FooterModal key="footerCutom" onCancel={onCancel} onFinish={onFinish} />]}
       >
         <div className="warningConfirm">

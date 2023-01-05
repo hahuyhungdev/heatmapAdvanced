@@ -1,31 +1,32 @@
-import React, { useCallback } from "react";
-import moment from "moment";
-import { useState } from "react";
-import { Card, RangePicker, SelectOptions, ShowData, TimeAgo } from "components";
+/* eslint-disable no-unused-vars */
+import { Card, RangePicker, SelectOptionsHeatpmap, ShowData, TimeAgo } from 'components';
 // import usersData from "data/userData.json";
-import { getDataSelector } from "config/dataSlice";
-import "antd/dist/reset.css";
-import { useSelector } from "react-redux";
-import { HeatMap } from "..";
+import { getDataSelector } from 'config/dataSlice';
+import moment from 'moment';
+import React, { useCallback } from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import { HeatMap } from '..';
 
 export function Home() {
   const [valueIncrease, setValueIncrease] = useState(0);
-  const [dates, setDates] = useState(["", ""]);
-  const [date, setDate] = useState("");
+  const [dates, setDates] = useState(['', '']);
+  const [date, setDate] = useState('');
   const [lastTime, setlastTime] = useState(6);
-  const [data, setData] = useState("");
+  const [data, setData] = useState('');
 
   const usersData = useSelector(getDataSelector);
   // console.log("dataStore", usersData);
 
   const handleChange = (data) => {
     // convert dataString to convert date to timestamp
-    console.log("dataForm", data);
+    console.log('dataForm', data);
     const convertDate = data.RangeDate.map((item) => {
-      console.log("itemRangedDate", moment(item).unix());
+      console.log('itemRangedDate', moment(item).unix());
       return moment(item.$d).unix();
     });
-    console.log("convertDate", convertDate);
+    console.log('convertDate', convertDate);
     setDates(convertDate);
     setDate(data);
   };
@@ -35,8 +36,8 @@ export function Home() {
   }, []);
   // handle time ago
   const handleTimeAgo = useCallback(() => {
-    const timeAgo = moment().subtract(lastTime, "hours").unix();
-    console.log("timeAgo", lastTime, timeAgo);
+    const timeAgo = moment().subtract(lastTime, 'hours').unix();
+    console.log('timeAgo', lastTime, timeAgo);
     return timeAgo;
   }, [lastTime]);
 
@@ -53,7 +54,7 @@ export function Home() {
   return (
     <div className="mainHomeTest">
       <h2>Start editing to see some magic happen!</h2>
-      <SelectOptions valuesSelect={valuesSelect} />
+      <SelectOptionsHeatpmap valuesSelect={valuesSelect} />
       <TimeAgo />
       {/* <RangePicker handleChange={handleChange} dates={dates} /> */}
 

@@ -1,38 +1,42 @@
-import { NotFound } from "components";
-import { Dashboard, Devices, Home, Layout, Report, Tags } from "pages";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./App.scss";
+// import 'antd/dist/reset.css';
+// import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
+import './App.css';
+
+import { NotFound } from 'components';
+import { Dashboard, Devices, Home, Layout, Report, Tags } from 'pages';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       element: <Layout />,
       children: [
         {
-          path: "/",
+          path: '/',
           element: <Dashboard />,
         },
         {
-          path: "/home",
+          path: '/home',
           element: <Home />,
         },
         {
-          path: "/devices",
+          path: '/devices',
           element: <Devices />,
         },
         {
-          path: "/tags",
+          path: '/tags',
           element: <Tags />,
         },
         {
-          path: "/report",
+          path: '/report',
           element: <Report />,
         },
       ],
     },
     {
-      path: "*",
+      path: '*',
       element: <NotFound />,
     },
   ]);

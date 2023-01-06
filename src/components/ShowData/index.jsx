@@ -2,7 +2,7 @@ import moment from 'moment';
 import { PropTypes } from 'prop-types';
 import React, { memo } from 'react';
 // import usersData from "../../data/fake.js";
-export const ShowData = memo(({ usersData }) => {
+export const ShowData = ({ usersData }) => {
   // console.log("usersData");
   // const usernameList = usersData.map((item) => item.username.map((point) => point.value));
   return (
@@ -23,7 +23,7 @@ export const ShowData = memo(({ usersData }) => {
       })}
     </div>
   );
-});
+};
 ShowData.propTypes = {
   usersData: PropTypes.array,
 };

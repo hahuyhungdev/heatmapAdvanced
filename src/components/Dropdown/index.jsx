@@ -1,17 +1,17 @@
 import { Select } from 'antd';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const { Option } = Select;
 
 export const SelectOption = ({
-  className,
-  onChange,
-  value,
-  options,
-  placeholder,
-  disabled,
-  isIcon,
-
+  className = '',
+  onChange = () => {},
+  value = '' || 0,
+  options = [],
+  placeholder = '',
+  disabled = false,
+  isIcon = false,
   ...props
 }) => {
   return (

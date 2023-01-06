@@ -5,8 +5,9 @@ import './style.scss';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Modal, Upload } from 'antd';
 import { message } from 'antd';
-import { FooterModal } from 'components';
-import { PropTypes } from 'prop-types';
+import { ButtonCustom, FooterModal } from 'components';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { useState } from 'react';
 
 export const PopupMap = ({ onFinish, onOpen, onCancel }) => {
@@ -41,12 +42,15 @@ export const PopupMap = ({ onFinish, onOpen, onCancel }) => {
         title="Upload Map"
         open={onOpen}
         onOk={onFinish}
+        centered
         onCancel={onCancel}
         footer={[<FooterModal key="footerCutom" onCancel={onCancel} onFinish={onFinish} />]}
       >
         <div className="warningConfirm">
-          <Upload onChange={onChange} customRequest={dummyRequest}>
-            <Button icon={<UploadOutlined />}>Click to Upload</Button>
+          <Upload onChange={onChange}>
+            <ButtonCustom style={{ width: '100%' }} icon={<UploadOutlined />}>
+              Click to Upload
+            </ButtonCustom>
           </Upload>
           {/* <br />
           <h3>Current State Log</h3>

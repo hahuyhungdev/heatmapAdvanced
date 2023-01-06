@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* eslint-disable react/prop-types */
 export const IconDashboard = (props) => {
   return (

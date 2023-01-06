@@ -2,10 +2,10 @@ import './style.scss';
 
 import { Button, Pagination, Space } from 'antd';
 import { ButtonCustom, ModalAlert, Page } from 'components';
+// import {ButtonCustom  } from 'components/Button';
 import { IconForklift, IconGroup, IconPerson } from 'components/Icons';
 import { PopupDevice, PopupMap, PopupTag } from 'components/Popup';
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 export const Devices = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModaTag, setIsModalTag] = useState(false);
@@ -41,8 +41,8 @@ export const Devices = () => {
       url_Image: <IconPerson />,
     },
     {
-      value: 'IconGroup',
-      label: 'IconGroup',
+      value: 'Group',
+      label: 'Group',
       url_Image: <IconGroup />,
     },
   ];
@@ -64,6 +64,8 @@ export const Devices = () => {
           gap: '10px',
         }}
       >
+        {' '}
+        <ButtonCustom onClick={increaseCount}>Increase</ButtonCustom>
         <div className="sectionDevice" style={{ backgroundColor: 'pink' }}>
           <h1>Devices Management</h1>
           <ButtonCustom

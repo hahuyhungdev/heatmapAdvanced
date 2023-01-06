@@ -17,7 +17,7 @@ export const ButtonCustom = ({
     <div className="antCustom">
       <Button onClick={onClick} className={className} disabled={disabled || loading} {...restProps}>
         {icon ? (
-          <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', justifyContent: 'center' }}>
             <span> {icon}</span>
             {children}
           </div>
@@ -41,5 +41,4 @@ ButtonCustom.propTypes = {
   onClick: PropTypes.any,
   style: PropTypes.object,
 };
-
-export default ButtonCustom;
+// export default ButtonCustom;

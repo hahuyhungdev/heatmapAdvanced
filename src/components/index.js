@@ -11,4 +11,5 @@ export * from './Popup';
 export * from './RangePicker';
 export * from './Select';
 export * from './ShowData';
+export * from './Table';
 export * from './TimeAgo';

@@ -2,9 +2,25 @@ import './style.scss';
 
 import { Button, Pagination, Space } from 'antd';
 import { ButtonCustom, ModalAlert, Page } from 'components';
-// import {ButtonCustom  } from 'components/Button';
 import { IconForklift, IconGroup, IconPerson } from 'components/Icons';
 import { PopupDevice, PopupMap, PopupTag } from 'components/Popup';
+export const dataOptions = [
+  {
+    value: 'hahuyhung',
+    label: 'Forklift   ',
+    url_Image: <IconForklift />,
+  },
+  {
+    value: 'hahuyhung1',
+    label: 'Person',
+    url_Image: <IconPerson />,
+  },
+  {
+    value: 'Group',
+    label: 'Group',
+    url_Image: <IconGroup />,
+  },
+];
 import React, { useState } from 'react';
 export const Devices = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -29,24 +45,6 @@ export const Devices = () => {
     setIsModalTag(false);
   };
 
-  const dataOptions = [
-    {
-      value: 'hahuyhung',
-      label: 'Forklift   ',
-      url_Image: <IconForklift />,
-    },
-    {
-      value: 'hahuyhung1',
-      label: 'Person',
-      url_Image: <IconPerson />,
-    },
-    {
-      value: 'Group',
-      label: 'Group',
-      url_Image: <IconGroup />,
-    },
-  ];
-
   const increaseCount = () => {
     console.log('increaseCount');
     setCount(count + 1);
@@ -64,7 +62,6 @@ export const Devices = () => {
           gap: '10px',
         }}
       >
-        {' '}
         <ButtonCustom onClick={increaseCount}>Increase</ButtonCustom>
         <div className="sectionDevice" style={{ backgroundColor: 'pink' }}>
           <h1>Devices Management</h1>

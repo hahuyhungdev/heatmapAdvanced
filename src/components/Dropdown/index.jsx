@@ -16,6 +16,8 @@ export const SelectOption = ({
 }) => {
   return (
     <Select
+      // @ts-ignore
+      defaultValue="lucy"
       className={className}
       onChange={onChange}
       value={value}
@@ -23,8 +25,8 @@ export const SelectOption = ({
       disabled={disabled}
       {...props}
     >
-      {options?.map(({ value, label, url_Image }) => (
-        <Option key={value} value={value}>
+      {options?.map(({ value, label, url_Image }, index) => (
+        <Option key={value || index} value={value}>
           {isIcon ? (
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
               <span>{url_Image}</span>
@@ -48,4 +50,5 @@ SelectOption.propTypes = {
   disabled: PropTypes.bool,
   isIcon: PropTypes.bool,
   url_Image: PropTypes.string || PropTypes.element,
+  defaultValue: PropTypes.any,
 };

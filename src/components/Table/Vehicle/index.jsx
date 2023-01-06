@@ -1,12 +1,14 @@
-import { Space, Table } from 'antd';
-// import { SelectOption } from 'components/Dropdown';
+/* eslint-disable no-unused-vars */
+import { Select, Space, Table } from 'antd';
+import { SelectOption } from 'components';
 import { IconStatus } from 'components/Icons';
+import { IconForklift, IconGroup, IconPerson } from 'components/Icons';
 import React, { useState } from 'react';
 
 const columns = [
   {
     title: 'Title',
-    dataIndex: 'label',
+    dataIndex: 'value',
     key: 'Title',
     render: (text) => <a>{text}</a>,
   },
@@ -25,80 +27,88 @@ const columns = [
 const dataVahicle = [
   {
     key: '1',
-    label: 'Demo tag 1',
     value: 'Demo tag 1',
+    label: 'forklift',
+    url_Image: <IconForklift />,
     status: true,
   },
   {
     key: '2',
-    label: 'Demo tag 2',
     value: 'Demo tag 2',
+    label: 'forklift',
+    url_Image: <IconForklift />,
     status: true,
   },
   {
     key: '3',
-    label: 'Demo tag 3',
     value: 'Demo tag 3',
+    label: 'person',
+    url_Image: <IconPerson />,
     status: false,
   },
   {
     key: '4',
-    label: 'Demo tag 4',
     value: 'Demo tag 4',
+    label: 'group',
+    url_Image: <IconGroup />,
     status: true,
   },
   {
     key: '5',
-    label: 'Demo tag 5',
+    value: 'Demo tag 5',
+    label: 'group',
+    url_Image: <IconGroup />,
     status: true,
   },
   {
     key: '6',
-    label: 'Demo tag 6',
+    value: 'Demo tag 6',
+    label: 'person',
+    url_Image: <IconPerson />,
     status: false,
   },
 ];
 
 export const TableVehicle = () => {
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const onSelectChange = (newSelectedRowKeys) => {
-    console.log('selectedRowKeys changed: ', newSelectedRowKeys);
-    setSelectedRowKeys(newSelectedRowKeys);
-  };
+  const [valueType, setValueType] = useState('');
 
-  const rowSelection = {
-    selectedRowKeys,
-    onChange: onSelectChange,
-    selections: [
-      Table.SELECTION_ALL,
-      // Table.SELECTION_INVERT,
-      Table.SELECTION_NONE,
-      {
-        key: 'even',
-        text: 'Select Status On Row',
-        onSelect: (changableRowKeys) => {
-          //dataVahicle select status true
-          let newSelectedRowKeys = [];
-          newSelectedRowKeys = changableRowKeys.filter((key, index) => {
-            if (dataVahicle[index].status === true) return true;
-            return false;
-          });
-          setSelectedRowKeys(newSelectedRowKeys);
-        },
-      },
-    ],
+  const onFilterChange = (_, test) => {
+    console.log(test.label);
+    setValueType(test.label);
   };
+  // const onFilterChange with equal with valueType
+  const dataFilter = dataVahicle.filter((item) => {
+    if (valueType === '' || valueType == 'All') return true;
+    return item.label === valueType;
+  });
+  console.log(dataFilter);
+
+  const dataSelect = [
+    {
+      label: 'All',
+      value: 'All',
+    },
+    {
+      label: 'forklift',
+      value: 'forklift',
+    },
+    {
+      label: 'person',
+      value: 'person',
+    },
+    {
+      label: 'group',
+      value: 'group',
+    },
+  ];
+
   return (
-    <div className="tableVahicle">
-      {/* <SelectOption options={selectTitle} placeholder="Select Tag" /> */}
-      <Table
-        rowSelection={rowSelection}
-        columns={columns}
-        dataSource={dataVahicle}
-        pagination={false}
-        // scroll={{ x: 100, y: 300 }}
-        scroll={{ y: 300 }}
-      />
+    <div
+      className="tableVahicle"
+      style={{ width: '100%', textAlign: 'center', display: 'flex', rowGap: '16px', flexDirection: 'column' }}
+    >
+      <Select options={dataSelect} placeholder="Select Tag" onChange={onFilterChange} />
+      <Table columns={columns} dataSource={dataFilter} pagination={false} scroll={{ y: 250 }} />
     </div>
   );
 };

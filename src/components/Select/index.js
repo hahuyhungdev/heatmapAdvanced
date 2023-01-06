@@ -4,7 +4,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { memo } from 'react';
 
-export const SelectOptionsHeatpmap = memo(({ valuesSelect }) => {
+export const SelectOptionsHeatpmap = ({ valuesSelect }) => {
   // const valuesSelect = (value) => {
   //   console.log(`selected ${value}`);
   // };
@@ -34,8 +34,8 @@ export const SelectOptionsHeatpmap = memo(({ valuesSelect }) => {
       options={options}
     />
   );
-});
+};
 SelectOptionsHeatpmap.propTypes = {
   valuesSelect: PropTypes.func,
 };
-export default SelectOptionsHeatpmap;
+export default memo(SelectOptionsHeatpmap);

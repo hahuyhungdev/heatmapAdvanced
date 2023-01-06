@@ -5,6 +5,7 @@ import { Modal } from 'antd';
 import { IconWarning } from 'components';
 import { FooterModal } from 'components';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 export const ModalAlert = ({ title, content, onFinish, onOpen, onCancel }) => {
   return (

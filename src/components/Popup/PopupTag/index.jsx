@@ -1,13 +1,12 @@
 /* eslint-disable no-unused-vars */
-import './style.scss';
-
 import { Form, Input, Modal } from 'antd';
 import { FooterModal } from 'components';
 import PropTypes from 'prop-types';
 import { memo } from 'react';
+import React from 'react';
 import { toast } from 'react-toastify';
 
-export const PopupTag = memo(({ title, onCancel, onOpen, onFinish }) => {
+export const PopupTag = ({ title, onOpen, onFinish, onCancel }) => {
   const [form] = Form.useForm();
   return (
     <div className="antCustom">
@@ -38,7 +37,7 @@ export const PopupTag = memo(({ title, onCancel, onOpen, onFinish }) => {
       </Modal>
     </div>
   );
-});
+};
 
 PopupTag.propTypes = {
   title: PropTypes.string,
@@ -47,4 +46,4 @@ PopupTag.propTypes = {
   onCancel: PropTypes.func,
 };
 
-export default PopupTag;
+export default memo(PopupTag);

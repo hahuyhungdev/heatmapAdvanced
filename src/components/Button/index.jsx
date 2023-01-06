@@ -4,10 +4,18 @@ import { Button } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export const ButtonCustom = ({ className, icon, loading = false, children, disabled = false, ...restProps }) => {
+export const ButtonCustom = ({
+  className = '',
+  onClick = () => {},
+  icon = null,
+  loading = false,
+  children,
+  disabled = false,
+  ...restProps
+}) => {
   return (
     <div className="antCustom">
-      <Button onClick={restProps.onClick} className={className} disabled={disabled || loading} {...restProps}>
+      <Button onClick={onClick} className={className} disabled={disabled || loading} {...restProps}>
         {icon ? (
           <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px' }}>
             <span> {icon}</span>
@@ -27,9 +35,11 @@ ButtonCustom.propTypes = {
   size: PropTypes.string,
   variant: PropTypes.string,
   color: PropTypes.string,
-  children: PropTypes.node,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   disabled: PropTypes.bool,
   icon: PropTypes.element,
+  onClick: PropTypes.any,
+  style: PropTypes.object,
 };
 
 export default ButtonCustom;

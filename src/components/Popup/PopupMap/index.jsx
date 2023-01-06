@@ -7,6 +7,7 @@ import { Button, Modal, Upload } from 'antd';
 import { message } from 'antd';
 import { ButtonCustom, FooterModal } from 'components';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { useState } from 'react';
 
 export const PopupMap = ({ onFinish, onOpen, onCancel }) => {
@@ -46,7 +47,7 @@ export const PopupMap = ({ onFinish, onOpen, onCancel }) => {
         footer={[<FooterModal key="footerCutom" onCancel={onCancel} onFinish={onFinish} />]}
       >
         <div className="warningConfirm">
-          <Upload onChange={onChange} customRequest={dummyRequest}>
+          <Upload onChange={onChange}>
             <ButtonCustom style={{ width: '100%' }} icon={<UploadOutlined />}>
               Click to Upload
             </ButtonCustom>

@@ -4,8 +4,10 @@ import { Form, Input, Modal, Space } from 'antd';
 import { FooterModal, SelectOption } from 'components';
 import PropTypes from 'prop-types';
 import { memo } from 'react';
+import React from 'react';
 import { toast } from 'react-toastify';
-export const PopupDevice = memo(({ title, options, onCancel, onOpen }) => {
+
+export const PopupDevice = ({ title, options, onCancel, onOpen }) => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
     console.log('Success:', values);
@@ -55,7 +57,7 @@ export const PopupDevice = memo(({ title, options, onCancel, onOpen }) => {
       </Modal>
     </div>
   );
-});
+};
 
 PopupDevice.propTypes = {
   title: PropTypes.string,
@@ -65,4 +67,4 @@ PopupDevice.propTypes = {
   options: PropTypes.array,
 };
 
-export default PopupDevice;
+export default memo(PopupDevice);

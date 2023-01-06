@@ -12,7 +12,7 @@ export const FooterModal = ({ onCancel, onFinish }) => {
       >
         Cancel
       </button>
-      <ButtonCustom type="primary" style={{ marginTop: '10px' }} htmlType="submit" onClick={onFinish}>
+      <ButtonCustom style={{ marginTop: '10px' }} onClick={onFinish} className={undefined} icon={undefined}>
         Save
       </ButtonCustom>
     </div>

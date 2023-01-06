@@ -3,13 +3,13 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { memo } from 'react';
 
-const DayPicker = memo(({ handleChange, date }) => {
+const DayPicker = ({ handleChange, date }) => {
   return (
     <>
       <DatePicker
         onChange={handleChange}
         format="YYYY-MM-DD"
-        placeholder={['Start Date', 'End Date']}
+        placeholder={'Select Date'}
         disabledDate={(current) => current && current > moment().endOf('day')}
       />
       <p
@@ -24,10 +24,10 @@ const DayPicker = memo(({ handleChange, date }) => {
       </p>
     </>
   );
-});
+};
 
 DayPicker.propTypes = {
   handleChange: PropTypes.func,
   date: PropTypes.string,
 };
-export default DayPicker;
+export default memo(DayPicker);

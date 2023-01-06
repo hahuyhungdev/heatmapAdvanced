@@ -1,6 +1,4 @@
 /* eslint-disable no-unused-vars */
-import './style.scss';
-
 import { Form, Input, Modal } from 'antd';
 import { FooterModal } from 'components';
 import PropTypes from 'prop-types';

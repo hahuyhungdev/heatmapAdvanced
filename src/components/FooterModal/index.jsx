@@ -1,5 +1,5 @@
 import { ButtonCustom } from 'components';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 export const FooterModal = ({ onCancel, onFinish }) => {

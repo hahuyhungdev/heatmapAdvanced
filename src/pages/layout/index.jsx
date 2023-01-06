@@ -2,41 +2,36 @@ import './style.scss';
 
 import clsx from 'clsx';
 import { IconDashboard, IconDevices, IconReport, IconTag } from 'components/Icons';
+import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
 const dataNavigation = [
   {
     path: '/',
     name: 'Monitoring Dashboard',
-    icon: <IconDashboard fill="#A85F0A" />,
+    icon: (color) => <IconDashboard fill={color} />,
   },
   {
     path: '/home',
     name: 'Ha Huy Hung',
-    icon: <IconDashboard />,
+    icon: (color) => <IconDashboard fill={color} />,
   },
   {
     path: '/devices',
     name: 'Devices Management',
-    icon: <IconDevices />,
+    icon: (color) => <IconDevices fill={color} />,
   },
   {
     path: '/tags',
     name: 'Tags Management',
-    icon: <IconTag />,
+    icon: (color) => <IconTag fill={color} />,
   },
   {
     path: '/report',
-    // name: '3123123',
-    name: 1312,
-    icon: <IconReport />,
+    name: 'Report',
+    icon: (color) => <IconReport fill={color} />,
   },
 ];
-// dataNavigation.propTypes = {
-//   path: PropTypes.string,
-//   name: PropTypes.string,
-//   icon: PropTypes.element,
-// };
 
 export const Layout = () => {
   const location = useLocation();
@@ -51,7 +46,7 @@ export const Layout = () => {
         <div className="sideBar">
           {dataNavigation.map((item) => (
             <Link className={clsx('item', { active: item.path === location.pathname })} to={item.path} key={item.path}>
-              <div>{item.icon}</div>
+              <div>{item.icon(item.path === location.pathname ? '#A85F0A' : null)}</div>
               <span>{item.name}</span>
             </Link>
           ))}

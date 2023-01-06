@@ -1,10 +1,6 @@
 import './style.scss';
 
 import { Button } from 'antd';
-import clsx from 'clsx';
-import { PropTypes } from 'prop-types';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -39,7 +35,7 @@ ButtonCustom.propTypes = {
   size: PropTypes.string,
   variant: PropTypes.string,
   color: PropTypes.string,
-  children: PropTypes.element || PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   disabled: PropTypes.bool,
   icon: PropTypes.element,
   onClick: PropTypes.any,

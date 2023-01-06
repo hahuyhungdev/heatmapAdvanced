@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import React, { memo } from 'react';
 // import usersData from "../../data/fake.js";
 export const ShowData = ({ usersData }) => {

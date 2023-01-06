@@ -1,5 +1,6 @@
+// @ts-nocheck
 import h337 from 'heatmap.js';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 export const HeatMap = ({ usersData }) => {

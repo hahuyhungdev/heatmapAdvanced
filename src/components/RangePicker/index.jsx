@@ -1,6 +1,6 @@
 import { Button, DatePicker, Form } from 'antd';
 import moment from 'moment';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import { memo } from 'react';
 import React from 'react';
 

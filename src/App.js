@@ -1,5 +1,6 @@
 import { NotFound } from 'components';
-import { Dashboard, Devices, Home, Layout, Report, Tags } from 'pages';
+import { Dashboard, Devices, Example, Home, Layout, Report, Tags } from 'pages';
+import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 function App() {
@@ -13,10 +14,6 @@ function App() {
           element: <Dashboard />,
         },
         {
-          path: '/home',
-          element: <Home />,
-        },
-        {
           path: '/devices',
           element: <Devices />,
         },
@@ -27,6 +24,14 @@ function App() {
         {
           path: '/report',
           element: <Report />,
+        },
+        {
+          path: '/home',
+          element: <Home />,
+        },
+        {
+          path: '/example',
+          element: <Example />,
         },
       ],
     },

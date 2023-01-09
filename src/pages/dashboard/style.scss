@@ -1,4 +1,17 @@
 @import 'assets/styles/_content.scss';
+@mixin SpaceComponent($space) {
+  margin-top: $space;
+  margin-bottom: $space;
+}
+@mixin titleComponent {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  color: #bfbfbf;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
 .dashboard {
   @extend .content;
   display: flex;
@@ -12,7 +25,39 @@
     }
   }
   .toolDasdboard {
-    min-width: 330px;
-    background: rgb(213, 89, 89);
+    max-width: 280px;
+    background: #ffffff;
+    overflow: hidden;
+    padding: 20px;
+    .configuration {
+      .ant-switch-checked {
+        background-color: #a85f0a;
+      }
+      .titleTool {
+        @include titleComponent;
+      }
+      .gridView,
+      .historical,
+      .anchorView {
+        // use mixin
+        @include SpaceComponent(16px);
+        display: flex;
+        justify-content: space-between;
+        span {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 24px;
+          color: #000000;
+        }
+      }
+    }
+    .vehicleList {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 2px solid #f0f0f0;
+      .titleVehicle {
+        @include titleComponent;
+      }
+    }
   }
 }

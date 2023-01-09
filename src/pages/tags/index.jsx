@@ -1,6 +1,6 @@
 import './style.scss';
 
-import ButtonCustom from 'components/Button';
+import { ButtonCustom } from 'components/Button';
 import React from 'react';
 export const Tags = () => {
   return (

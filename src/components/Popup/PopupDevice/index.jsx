@@ -43,7 +43,7 @@ export const PopupDevice = ({ title, options, onCancel, onOpen }) => {
             >
               <Input style={{ width: 230 }} placeholder="Please input" />
             </Form.Item>
-            <Form.Item label="Icon" name={'icon'} rules={[{ required: true, message: 'Icon is required' }]}>
+            <Form.Item label="Type" name={'Type'} rules={[{ required: true, message: 'Icon is required' }]}>
               <SelectOption isIcon options={options} placeholder="Select Icon" />
             </Form.Item>
           </Space>

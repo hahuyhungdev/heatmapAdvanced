@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+import './style.scss';
+
 import { Card, RangePicker, SelectOptionsHeatpmap, ShowData, TimeAgo } from 'components';
 // import usersData from "data/userData.json";
 import { getDataSelector } from 'config/dataSlice';

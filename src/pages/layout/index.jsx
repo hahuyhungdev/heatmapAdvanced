@@ -12,11 +12,6 @@ const dataNavigation = [
     icon: (color) => <IconDashboard fill={color} />,
   },
   {
-    path: '/home',
-    name: 'Ha Huy Hung',
-    icon: (color) => <IconDashboard fill={color} />,
-  },
-  {
     path: '/devices',
     name: 'Devices Management',
     icon: (color) => <IconDevices fill={color} />,
@@ -30,6 +25,16 @@ const dataNavigation = [
     path: '/report',
     name: 'Report',
     icon: (color) => <IconReport fill={color} />,
+  },
+  {
+    path: '/example',
+    name: 'Example',
+    icon: (color) => <IconDevices fill={color} />,
+  },
+  {
+    path: '/home',
+    name: 'Ha Huy Hung',
+    icon: (color) => <IconDashboard fill={color} />,
   },
 ];
 

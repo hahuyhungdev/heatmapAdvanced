@@ -9,6 +9,7 @@ import { ButtonCustom, FooterModal } from 'components';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 export const PopupMap = ({ onFinish, onOpen, onCancel }) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -24,14 +25,14 @@ export const PopupMap = ({ onFinish, onOpen, onCancel }) => {
         break;
       case 'done':
         setSelectedFile(info.file);
-        message.success('Upload successfully');
+
+        toast.success('Upload successfully');
         console.log(info.file);
         break;
 
       default:
-        // error or removed
         setSelectedFile(null);
-        message.error('Upload failed');
+        toast.error('Upload failed');
         console.log(info.file);
         break;
     }

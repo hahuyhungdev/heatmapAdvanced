@@ -4,14 +4,13 @@
     "checkJs": true,
     "jsx": "react",
     "paths": {
-      "@/*": ["/*"],
-      "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"],
-      "@data/*": ["data/*"],
-      "@utils/*": ["utils/*"],
-      "@hooks/*": ["hooks/*"],
-      "@config/*": ["config/*"],
-      "@assets/*": ["assets/*"]
+      "components/*": ["components/*"],
+      "pages/*": ["pages/*"],
+      "data/*": ["data/*"],
+      "utils/*": ["utils/*"],
+      "hooks/*": ["hooks/*"],
+      "config/*": ["config/*"],
+      "assets/*": ["assets/*"]
     }
   }
 }

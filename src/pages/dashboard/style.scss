@@ -1,4 +1,3 @@
-@import 'assets/styles/_content.scss';
 @mixin SpaceComponent($space) {
   margin-top: $space;
   margin-bottom: $space;
@@ -13,7 +12,6 @@
   text-transform: uppercase;
 }
 .dashboard {
-  @extend .content;
   display: flex;
   .dashboardMap {
     width: 100%;

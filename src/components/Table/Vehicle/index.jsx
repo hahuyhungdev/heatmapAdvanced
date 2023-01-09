@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
+import './style.scss';
+
 import { Select, Space, Table } from 'antd';
 import { SelectOption } from 'components';
 import { IconStatus } from 'components/Icons';
 import { IconForklift, IconGroup, IconPerson } from 'components/Icons';
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
 const columns = [
   {
@@ -41,7 +43,7 @@ const dataVahicle = [
   },
   {
     key: '3',
-    value: 'Demo tag 3',
+    value: 'Demo tag 3 person',
     label: 'person',
     url_Image: <IconPerson />,
     status: false,
@@ -55,17 +57,24 @@ const dataVahicle = [
   },
   {
     key: '5',
-    value: 'Demo tag 5',
+    value: 'Demo tag 5 group',
     label: 'group',
     url_Image: <IconGroup />,
     status: true,
   },
   {
     key: '6',
-    value: 'Demo tag 6',
+    value: 'Demo tag 6 person',
     label: 'person',
     url_Image: <IconPerson />,
     status: false,
+  },
+  {
+    key: '7',
+    value: 'Demo tag forklift 7',
+    label: 'forklift',
+    url_Image: <IconForklift />,
+    status: true,
   },
 ];
 
@@ -81,7 +90,6 @@ export const TableVehicle = () => {
     if (valueType === '' || valueType == 'All') return true;
     return item.label === valueType;
   });
-  console.log(dataFilter);
 
   const dataSelect = [
     {
@@ -103,12 +111,10 @@ export const TableVehicle = () => {
   ];
 
   return (
-    <div
-      className="tableVahicle"
-      style={{ width: '100%', textAlign: 'center', display: 'flex', rowGap: '16px', flexDirection: 'column' }}
-    >
+    <div className="tableVahicle">
       <Select options={dataSelect} placeholder="Select Tag" onChange={onFilterChange} />
       <Table columns={columns} dataSource={dataFilter} pagination={false} scroll={{ y: 250 }} />
     </div>
   );
 };
+export default TableVehicle;

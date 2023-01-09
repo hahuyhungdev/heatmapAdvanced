@@ -1,3 +1,4 @@
+// @ts-nocheck
 import './style.scss';
 
 import { Radio } from 'antd';
@@ -21,11 +22,8 @@ export const ButtonGroup = ({
         className={className}
         onChange={onChange}
         defaultValue={defaultValue}
-        // @ts-ignore
         optionType={optionType}
-        // @ts-ignore
         size={size}
-        // @ts-ignore
         buttonStyle={buttonStyle}
         {...restProps}
       >

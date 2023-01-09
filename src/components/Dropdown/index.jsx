@@ -7,7 +7,7 @@ const { Option } = Select;
 export const SelectOption = ({
   className = '',
   onChange = () => {},
-  value = '' || 0,
+  value = 0,
   options = [],
   placeholder = '',
   disabled = false,

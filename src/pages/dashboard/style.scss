@@ -27,7 +27,7 @@
   .toolDasdboard {
     max-width: 280px;
     background: #ffffff;
-
+    overflow: hidden;
     padding: 20px;
     .configuration {
       .ant-switch-checked {
@@ -37,6 +37,7 @@
         @include titleComponent;
       }
       .gridView,
+      .historical,
       .anchorView {
         // use mixin
         @include SpaceComponent(16px);

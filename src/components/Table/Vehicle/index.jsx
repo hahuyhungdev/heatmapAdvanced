@@ -34,6 +34,9 @@ export const dataVahicle = [
     Icon: <IconForklift />,
     status: true,
     tag: 'Tag 01',
+    description: 'Vel cras auctor at tortor imperdiet amet id sed rhoncus 01',
+    createAt: '2021-02-05 08:28:36 ',
+    updateAt: '2021-02-05 08:28:36 ',
   },
   {
     key: '2',
@@ -42,6 +45,9 @@ export const dataVahicle = [
     Icon: <IconForklift />,
     status: true,
     tag: 'Tag 02',
+    description: 'Vel cras auctor at tortor imperdiet amet id sed rhoncus 01',
+    createAt: '2021-02-05 08:28:36 ',
+    updateAt: '2021-02-05 08:28:36 ',
   },
   {
     key: '3',
@@ -50,6 +56,9 @@ export const dataVahicle = [
     Icon: <IconPerson />,
     status: false,
     tag: 'Tag 03',
+    description: 'Description 01',
+    createAt: '2021-02-05 08:28:36 ',
+    updateAt: '2021-02-05 08:28:36 ',
   },
   {
     key: '4',
@@ -58,6 +67,9 @@ export const dataVahicle = [
     Icon: <IconGroup />,
     status: true,
     tag: 'Tag 04',
+    description: 'Description 01',
+    createAt: '2021-02-05 08:28:36 ',
+    updateAt: '2021-02-05 08:28:36 ',
   },
   {
     key: '5',
@@ -66,6 +78,9 @@ export const dataVahicle = [
     Icon: <IconGroup />,
     status: true,
     tag: 'Tag 05',
+    description: 'Description 01',
+    createAt: '2021-02-05 08:28:36 ',
+    updateAt: '2021-02-05 08:28:36 ',
   },
   {
     key: '6',
@@ -74,6 +89,9 @@ export const dataVahicle = [
     Icon: <IconPerson />,
     status: false,
     tag: 'Tag 06',
+    description: 'Description 01',
+    createAt: '2021-02-05 08:28:36 ',
+    updateAt: '2021-02-05 08:28:36 ',
   },
   {
     key: '7',
@@ -82,6 +100,9 @@ export const dataVahicle = [
     Icon: <IconForklift />,
     status: true,
     tag: 'Tag 07',
+    description: 'Description 01',
+    createAt: '2021-02-05 08:28:36 ',
+    updateAt: '2021-02-05 08:28:36 ',
   },
 ];
 

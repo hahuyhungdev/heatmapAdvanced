@@ -1,19 +1,18 @@
 /* eslint-disable no-unused-vars */
 import './style.scss';
 
-import { Space, Table } from 'antd';
+import { Table } from 'antd';
 import nodata from 'assets/images/nodata.png';
 import { ButtonCustom } from 'components/Button';
-import { IconStatus, IconUnion } from 'components/Icons';
+import { IconUnion } from 'components/Icons';
 import { ModalAlert } from 'components/Modal';
-import { PopupDevice } from 'components/Popup';
-import { dataOptions } from 'pages/example';
+import { PopupTag } from 'components/Popup';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
-const DevicesTable = ({ dataDevice, newDevice }) => {
-  const [dataSource, setDataSources] = useState(dataDevice);
+export const TagsTable = ({ dataTag, newValue }) => {
+  const [dataSource, setDataSources] = useState([]);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [dataRows, setDataRows] = useState(null);
 
@@ -21,13 +20,14 @@ const DevicesTable = ({ dataDevice, newDevice }) => {
   const [isModalConfirm, setIsModalConfirm] = useState(false);
   const [isModalCreate, setIsModalCreate] = useState(false);
   useEffect(() => {
-    setDataSources(dataDevice);
-  }, [dataDevice]);
+    setDataSources(dataTag);
+  }, [dataTag]);
+  // new value
   useEffect(() => {
-    if (newDevice) {
-      setDataSources([...dataSource, newDevice]);
+    if (newValue) {
+      setDataSources([...dataSource, newValue]);
     }
-  }, [newDevice]);
+  }, [newValue]);
 
   const onSelectChange = (newSelectedRowKeys) => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
@@ -55,50 +55,27 @@ const DevicesTable = ({ dataDevice, newDevice }) => {
         if (item.key === dataRows.key) {
           return {
             ...item,
-            value: values.name,
-            tag: values.tag,
+            value: values.nameTag,
             description: values.description,
           };
         }
+        console.log('item', item);
         return item;
       }),
     );
     setIsModalEdit(false);
     toast.success('Edit success');
   };
-
+  useEffect(() => {
+    setDataSources(dataTag);
+  }, [dataTag]);
   const columns = [
     {
-      title: 'Icon',
-      dataIndex: 'Icon',
-      key: 'Icon',
-      render: (text) => <a>{text}</a>,
-      width: 75,
-    },
-    {
-      title: 'Name device',
+      title: 'Name tag',
       dataIndex: 'value',
       key: 'value',
       render: (text) => <a>{text}</a>,
       width: 150,
-    },
-    {
-      title: 'Tag',
-      dataIndex: 'tag',
-      key: 'tag',
-      render: (text) => <a>{text}</a>,
-      width: 100,
-    },
-    {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
-      render: (_, record) => (
-        <Space size="middle">
-          <IconStatus fill={record?.status ? '#C17115' : '#8C8C8C'} />
-        </Space>
-      ),
-      width: 75,
     },
     {
       title: 'Description',
@@ -111,6 +88,7 @@ const DevicesTable = ({ dataDevice, newDevice }) => {
       dataIndex: 'createAt',
       key: 'createAt',
       render: (text) => <a>{text}</a>,
+      sorter: (a, b) => a.createAt - b.createAt,
       width: 200,
     },
     {
@@ -118,6 +96,7 @@ const DevicesTable = ({ dataDevice, newDevice }) => {
       dataIndex: 'updateAt',
       key: 'updateAt',
       render: (text) => <a>{text}</a>,
+      sorter: (a, b) => a.updateAt - b.updateAt,
       width: 200,
     },
     {
@@ -155,27 +134,27 @@ const DevicesTable = ({ dataDevice, newDevice }) => {
   };
 
   return (
-    <div className="DevicesTable">
+    <div className="TagsTable">
       {isModalConfirm && (
         <ModalAlert
           onFinish={handleDelete}
           onCancel={handleCancel}
-          title="Are you sure delete this device?"
+          title="Are you sure delete this tag?"
           content="You can’t undo this action"
           onOpen={isModalConfirm}
         />
       )}
       <br />
       {isModalEdit && (
-        <PopupDevice
+        <PopupTag
           onFinish={handleEdit}
           onInitialValues={dataRows}
           title="Edit Object"
-          options={dataOptions}
           onCancel={handleCancel}
           onOpen={isModalEdit}
         />
       )}
+
       <Table
         locale={{
           emptyText: (
@@ -192,12 +171,18 @@ const DevicesTable = ({ dataDevice, newDevice }) => {
         columns={columns}
         dataSource={dataSource}
         scroll={{ y: 430 }}
+        pagination={{
+          position: ['bottomRight'],
+          showTotal: (total, range) => {
+            return `${range[0]}-${range[1]} of ${total} items`;
+          },
+          pageSize: 10,
+        }}
       />
     </div>
   );
 };
-DevicesTable.propTypes = {
-  dataDevice: PropTypes.array,
-  newDevice: PropTypes.object,
+TagsTable.propTypes = {
+  dataTag: PropTypes.array,
+  newValue: PropTypes.object,
 };
-export default DevicesTable;

@@ -19,7 +19,7 @@ export const PopupDevice = ({ title, options, onCancel, onOpen, onInitialValues,
         title={title}
         open={onOpen}
         centered
-        className={'modalStyle'}
+        className={'modalDevice'}
         onOk={form.submit}
         onCancel={onCancel}
         footer={[<FooterModal key="footerCutom" onCancel={onCancel} onFinish={form.submit} />]}

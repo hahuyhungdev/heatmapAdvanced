@@ -15,11 +15,18 @@
   display: flex;
   .dashboardMap {
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 64px);
+    // width: 100%;
+    // height: 100%;
     overflow: hidden;
+    // background-image: url('./background.png');
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-position: center;
     img {
+      object-fit: cover;
       width: 100%;
-      height: auto;
+      height: 100%;
     }
   }
   .toolDasdboard {

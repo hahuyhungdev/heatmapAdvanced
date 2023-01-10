@@ -40,7 +40,6 @@ const dataNavigation = [
 
 export const Layout = () => {
   const location = useLocation();
-  console.log('location', location.pathname);
   return (
     <div className="mainHome">
       <header className="header">

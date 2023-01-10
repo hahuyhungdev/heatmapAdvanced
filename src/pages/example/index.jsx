@@ -6,12 +6,12 @@ import { IconForklift, IconGroup, IconPerson } from 'components/Icons';
 import { PopupDevice, PopupMap, PopupTag } from 'components/Popup';
 export const dataOptions = [
   {
-    value: 'hahuyhung',
+    value: 'Forklift',
     label: 'Forklift   ',
     Icon: <IconForklift />,
   },
   {
-    value: 'hahuyhung1',
+    value: 'Person',
     label: 'Person',
     Icon: <IconPerson />,
   },

@@ -3,33 +3,21 @@ import './style.scss';
 import { Input } from 'antd';
 import nodata from 'assets/images/nodata.png';
 import { ButtonCustom } from 'components/Button';
-import { IconForklift, IconGroup, IconPerson, IconUnion } from 'components/Icons';
+import { IconForklift, IconUnion } from 'components/Icons';
 import { PopupDevice } from 'components/Popup';
-// import { dataVahicle } from 'components/Table';
+import { dataVahicle } from 'components/Table';
 import DevicesTable from 'components/Table/Devices';
+import moment from 'moment';
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
-const dataOptions = [
-  {
-    value: 'hahuyhung',
-    label: 'Forklift   ',
-    Icon: <IconForklift />,
-  },
-  {
-    value: 'hahuyhung1',
-    label: 'Person',
-    Icon: <IconPerson />,
-  },
-  {
-    value: 'Group',
-    label: 'Group',
-    Icon: <IconGroup />,
-  },
-];
-const dataVahicle = [];
+import { dataOptions } from '..';
+
+// const dataVahicle = [];
 export const Devices = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const onSearch = (value) => console.log(value);
+  const [newDevice, setNewDevice] = useState(null);
+  const [dataFilter, setDataFilter] = useState(dataVahicle);
   const { Search } = Input;
   const showPopup = () => {
     console.log('showPopup');
@@ -38,7 +26,26 @@ export const Devices = () => {
   // handle create
   const handleCreate = (values) => {
     console.log('values', values);
+    setNewDevice({
+      key: Math.random().toString(36).substr(2, 9),
+      value: values.name,
+      label: Math.random().toString(36).substr(2, 9),
+      description: values.description,
+      createAt: moment().format('YYYY-MM-DD HH:mm:ss'),
+      updateAt: moment().format('YYYY-MM-DD HH:mm:ss'),
+      Icon: <IconForklift />,
+      tag: values.tag,
+    });
+    toast.success('Create success');
     setIsModalVisible(false);
+  };
+  // handle search data table
+  const handleSearch = (value) => {
+    console.log('handleSearch', value);
+    const filterValue = dataVahicle.filter((item) => {
+      return item.value.toLowerCase().includes(value.toLowerCase());
+    });
+    setDataFilter(filterValue);
   };
   return (
     <div className="mainDevices">
@@ -67,7 +74,7 @@ export const Devices = () => {
           <header>
             <title>Objects List</title>
             <div className="toolbar">
-              <Search placeholder="input search text" onSearch={onSearch} style={{ width: 200 }} />
+              <Search placeholder="input search text" onSearch={handleSearch} style={{ width: 200 }} />
               <ButtonCustom onClick={showPopup}>create</ButtonCustom>
               {isModalVisible && (
                 <PopupDevice
@@ -80,7 +87,7 @@ export const Devices = () => {
               )}
             </div>
           </header>
-          <DevicesTable dataDevice={dataVahicle} />
+          <DevicesTable dataDevice={dataFilter} newDevice={newDevice} />
         </>
       )}
     </div>

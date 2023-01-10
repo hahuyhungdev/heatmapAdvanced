@@ -2,21 +2,23 @@
 import './style.scss';
 
 import { Space, Table } from 'antd';
-import { IconStatus } from 'components/Icons';
+import nodata from 'assets/images/nodata.png';
+import { ButtonCustom } from 'components/Button';
+import { IconStatus, IconUnion } from 'components/Icons';
 import { ModalAlert } from 'components/Modal';
 import { PopupDevice } from 'components/Popup';
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
-import { dataVahicle } from '../Vehicle';
-
-const DevicesTable = () => {
-  const [dataSource, setDataSources] = useState(dataVahicle);
+const DevicesTable = ({ dataDevice }) => {
+  const [dataSource, setDataSources] = useState(dataDevice);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [dataRows, setDataRows] = useState(null);
 
   const [isModalEdit, setIsModalEdit] = useState(false);
   const [isModalConfirm, setIsModalConfirm] = useState(false);
+  const [isModalCreate, setIsModalCreate] = useState(false);
 
   const onSelectChange = (newSelectedRowKeys) => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
@@ -162,14 +164,32 @@ const DevicesTable = () => {
           onFinish={handleEdit}
           onInitialValues={dataRows}
           title="Edit Object"
-          options={dataVahicle}
+          options={dataDevice}
           onCancel={handleCancel}
           onOpen={isModalEdit}
         />
       )}
-      <Table rowSelection={rowSelection} columns={columns} dataSource={dataSource} scroll={{ y: 430 }} />
+      <Table
+        locale={{
+          emptyText: (
+            <div className="empty">
+              <img src={nodata} alt="nodata" />
+              <h3>No data</h3>
+              <ButtonCustom isIcon icon={<IconUnion />}>
+                Create new
+              </ButtonCustom>
+            </div>
+          ),
+        }}
+        rowSelection={rowSelection}
+        columns={columns}
+        dataSource={dataSource}
+        scroll={{ y: 430 }}
+      />
     </div>
   );
 };
-
+DevicesTable.propTypes = {
+  dataDevice: PropTypes.array,
+};
 export default DevicesTable;

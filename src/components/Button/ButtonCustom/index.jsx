@@ -7,6 +7,7 @@ import React from 'react';
 export const ButtonCustom = ({
   className = '',
   onClick = () => {},
+  isIcon = false,
   icon = null,
   loading = false,
   children,
@@ -16,9 +17,9 @@ export const ButtonCustom = ({
   return (
     <div className="antCustom">
       <Button onClick={onClick} className={className} disabled={disabled || loading} {...restProps}>
-        {icon ? (
+        {isIcon ? (
           <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', justifyContent: 'center' }}>
-            <span> {icon}</span>
+            {icon}
             {children}
           </div>
         ) : (
@@ -37,6 +38,7 @@ ButtonCustom.propTypes = {
   color: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   disabled: PropTypes.bool,
+  isIcon: PropTypes.bool,
   icon: PropTypes.element,
   onClick: PropTypes.any,
   style: PropTypes.object,

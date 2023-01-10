@@ -1,5 +1,6 @@
 import './style.scss';
 
+// eslint-disable-next-line no-unused-vars
 import Background from 'assets/images/background.png';
 import React from 'react';
 

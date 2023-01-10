@@ -6,4 +6,5 @@ export * from './IconPerson';
 export * from './IconReport';
 export * from './IconStatus';
 export * from './IconTag';
+export * from './IconUnion';
 export * from './IconWarning';

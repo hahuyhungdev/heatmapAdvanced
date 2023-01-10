@@ -16,7 +16,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
-      <ToastContainer position="bottom-right" />
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </Provider>
   </React.StrictMode>,
 );

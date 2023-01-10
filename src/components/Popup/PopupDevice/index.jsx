@@ -7,12 +7,12 @@ import { memo } from 'react';
 import React from 'react';
 import { toast } from 'react-toastify';
 
-export const PopupDevice = ({ title, options, onCancel, onOpen }) => {
+export const PopupDevice = ({ title, options, onCancel, onOpen, onInitialValues, onFinish }) => {
   const [form] = Form.useForm();
-  const onFinish = (values) => {
-    console.log('Success:', values);
-    toast.success('Success');
-  };
+  // const onFinish = (values) => {
+  //   console.log('Success:', values);
+  //   toast.success('Success');
+  // };
   return (
     <div className="antCustom">
       <Modal
@@ -33,6 +33,12 @@ export const PopupDevice = ({ title, options, onCancel, onOpen }) => {
             toast.error(error.errorFields[0].errors[0]);
           }}
           colon={false}
+          initialValues={{
+            name: onInitialValues?.value,
+            type: onInitialValues?.label,
+            tag: onInitialValues?.tag,
+            description: onInitialValues?.description,
+          }}
         >
           <Space>
             <Form.Item
@@ -43,14 +49,14 @@ export const PopupDevice = ({ title, options, onCancel, onOpen }) => {
             >
               <Input style={{ width: 230 }} placeholder="Please input" />
             </Form.Item>
-            <Form.Item label="Type" name={'Type'} rules={[{ required: true, message: 'Icon is required' }]}>
+            <Form.Item label="Type" name={'type'} rules={[{ required: true, message: 'Icon is required' }]}>
               <SelectOption isIcon options={options} placeholder="Select Icon" />
             </Form.Item>
           </Space>
-          <Form.Item label="Tag" name={'Tag'} rules={[{ required: true, message: 'Tag is required' }]}>
+          <Form.Item label="Tag" name={'tag'} rules={[{ required: true, message: 'Tag is required' }]}>
             <SelectOption options={options} placeholder="Select Tag" />
           </Form.Item>
-          <Form.Item name={'introduction'} label="Introduction">
+          <Form.Item label="Description" name={'description'}>
             <Input.TextArea showCount maxLength={100} placeholder="disable resize" />
           </Form.Item>
         </Form>
@@ -65,6 +71,7 @@ PopupDevice.propTypes = {
   onFinish: PropTypes.func,
   onCancel: PropTypes.func,
   options: PropTypes.array,
+  onInitialValues: PropTypes.object,
 };
 
 export default memo(PopupDevice);

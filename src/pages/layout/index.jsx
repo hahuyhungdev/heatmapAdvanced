@@ -56,7 +56,9 @@ export const Layout = () => {
             </Link>
           ))}
         </div>
-        <Outlet />
+        <div className="content">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

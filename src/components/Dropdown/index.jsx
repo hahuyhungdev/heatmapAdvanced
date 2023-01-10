@@ -25,11 +25,11 @@ export const SelectOption = ({
       disabled={disabled}
       {...props}
     >
-      {options?.map(({ value, label, url_Image }, index) => (
+      {options?.map(({ value, label, Icon }, index) => (
         <Option key={value || index} value={value}>
           {isIcon ? (
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
-              <span>{url_Image}</span>
+              <span>{Icon}</span>
               <span>{label}</span>
             </div>
           ) : (
@@ -49,6 +49,6 @@ SelectOption.propTypes = {
   key: PropTypes.string,
   disabled: PropTypes.bool,
   isIcon: PropTypes.bool,
-  url_Image: PropTypes.string || PropTypes.element,
+  Icon: PropTypes.string || PropTypes.element,
   defaultValue: PropTypes.any,
 };

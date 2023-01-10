@@ -8,17 +8,17 @@ export const dataOptions = [
   {
     value: 'hahuyhung',
     label: 'Forklift   ',
-    url_Image: <IconForklift />,
+    Icon: <IconForklift />,
   },
   {
     value: 'hahuyhung1',
     label: 'Person',
-    url_Image: <IconPerson />,
+    Icon: <IconPerson />,
   },
   {
     value: 'Group',
     label: 'Group',
-    url_Image: <IconGroup />,
+    Icon: <IconGroup />,
   },
 ];
 import React, { useState } from 'react';

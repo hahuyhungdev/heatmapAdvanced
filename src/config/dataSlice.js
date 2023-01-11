@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   data: [
     {
-      username: [
+      logs: [
         {
           x: 12,
           y: 12,
@@ -13,7 +13,7 @@ const initialState = {
       date: 1671044565,
     },
     {
-      username: [
+      logs: [
         {
           x: 712,
           y: 502,
@@ -23,7 +23,7 @@ const initialState = {
       date: 1671176800,
     },
     {
-      username: [
+      logs: [
         {
           x: 513,
           y: 394,
@@ -143,7 +143,7 @@ const initialState = {
       date: 1672045200,
     },
     {
-      username: [
+      logs: [
         {
           x: 812,
           y: 802,

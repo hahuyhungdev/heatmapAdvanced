@@ -1,15 +1,18 @@
-/* eslint-disable no-unused-vars */
 import './style.scss';
 
 import { DatePicker } from 'antd';
-import { ButtonCustom } from 'components/Button';
 import { SelectOption } from 'components/Dropdown';
-import { IconDashboard, IconDownload } from 'components/Icons';
+import { getDataSelector } from 'config/dataSlice';
 // import RangePicker from 'components/RangePicker';
 import moment from 'moment';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import { ExcelExport } from './excelExport';
 const { RangePicker } = DatePicker;
+
 export const Report = () => {
+  const usersData = useSelector(getDataSelector);
   const [dates, setDates] = useState([null, null]);
   const onOk = (data) => {
     if (!data) return;
@@ -20,6 +23,21 @@ export const Report = () => {
     setDates([startTimestamp, endTimestamp]);
   };
   console.log('dates', dates);
+  console.log('usersData', usersData.data);
+  const flatData = usersData.data
+    .map((set) => {
+      const date = moment.unix(set.date).format('DD MMMM YYYY');
+      return set.logs.map((log) => {
+        return {
+          x: log.x,
+          y: log.y,
+          value: log.value,
+          date: date,
+        };
+      });
+    })
+    .flat();
+  console.log('flatData', flatData);
   return (
     <div className="mainReport">
       <div className="datetime">
@@ -35,9 +53,7 @@ export const Report = () => {
         <div className="span">Devices</div>
         <SelectOption />
       </div>
-      <ButtonCustom isIcon icon={<IconDownload />}>
-        Get file
-      </ButtonCustom>
+      <ExcelExport excelData={flatData} />
     </div>
   );
 };

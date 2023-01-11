@@ -4,7 +4,7 @@ import './style.scss';
 import Background from 'assets/images/background.png';
 import React from 'react';
 
-import SidebarLeft from './sidebarLeft';
+import SidebarRight from './sidebarRight';
 
 export const Dashboard = () => {
   return (
@@ -12,7 +12,7 @@ export const Dashboard = () => {
       <div className="dashboardMap">
         <img src={Background} alt="map" />
       </div>
-      <SidebarLeft />
+      <SidebarRight />
     </div>
   );
 };

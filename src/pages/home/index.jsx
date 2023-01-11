@@ -58,7 +58,7 @@ export function Home() {
       <h2>Start editing to see some magic happen!</h2>
       <SelectOptionsHeatpmap valuesSelect={valuesSelect} />
       <TimeAgo />
-      {/* <RangePicker handleChange={handleChange} dates={dates} /> */}
+      <RangePicker handleChange={handleChange} dates={dates} />
 
       <ShowData usersData={filterData} />
       <HeatMap usersData={filterData} />

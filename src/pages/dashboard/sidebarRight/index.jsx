@@ -1,14 +1,20 @@
 import '../style.scss';
 
 import { UploadOutlined } from '@ant-design/icons';
-import { Switch } from 'antd';
+import { DatePicker, Switch } from 'antd';
 import { ButtonCustom, ButtonGroup, PopupMap } from 'components';
 import { TableVehicle } from 'components/Table';
+import { sidebarRightSelector, toggleLineTrace } from 'config/sidebarRightSlice';
+import moment from 'moment';
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-const SidebarLeft = () => {
-  const [isVisableLineTrace, setIsVisableLineTrace] = useState(false);
+const SidebarRight = () => {
   const [isModalMap, setIsModalMap] = useState(false);
+  const [fromDate, setFromDate] = useState(null);
+  const dispatch = useDispatch();
+  const { isVisableLineTrace } = useSelector(sidebarRightSelector);
+  console.log('statusSidebar', isVisableLineTrace);
   const dataButtonGroup = [
     {
       value: 'off',
@@ -23,19 +29,35 @@ const SidebarLeft = () => {
       label: 'Heatmap',
     },
   ];
+
   // handle switch button group
   const onChangeButtonGroup = (e) => {
     console.log('radio checked', e.target.value);
     if (e.target.value === 'linetrace') {
-      setIsVisableLineTrace(true);
+      dispatch(toggleLineTrace(true));
     } else {
-      setIsVisableLineTrace(false);
+      dispatch(toggleLineTrace(false));
     }
   };
 
   const onChange = (checked) => {
     console.log(`switch to ${checked}`);
   };
+
+  // onChange date picker
+  const onChangePicker = (date, dateString, type) => {
+    if (type === 'from') {
+      console.log('date', date);
+      setFromDate(date);
+    }
+  };
+  const onOkPicker = (data, type) => {
+    if (!data) return;
+    if (type === 'from') {
+      setFromDate(data);
+    }
+  };
+
   return (
     <div className="toolDasdboard">
       <div className="configuration">
@@ -46,6 +68,26 @@ const SidebarLeft = () => {
             <div className="historical">
               <span>Historical Data</span>
               <Switch defaultChecked onChange={onChange} />
+            </div>
+            <div className="selectDays">
+              <DatePicker
+                placeholder="From"
+                showTime
+                onChange={(date, dateString) => onChangePicker(date, dateString, 'from')}
+                onOk={(data) => onOkPicker(data, 'from')}
+                format="YYYY-MM-DD HH:mm"
+                disabledDate={(current) => current && current > moment().endOf('day')}
+              />
+              <DatePicker
+                placeholder="To"
+                showTime
+                onChange={(date, dateString) => onChangePicker(date, dateString, 'to')}
+                onOk={(data) => onOkPicker(data, 'to')}
+                format="YYYY-MM-DD HH:mm"
+                disabledDate={(current) => {
+                  return current && (current > moment().endOf('day') || current < fromDate);
+                }}
+              />
             </div>
           </div>
         )}
@@ -84,4 +126,4 @@ const SidebarLeft = () => {
   );
 };
 
-export default SidebarLeft;
+export default SidebarRight;

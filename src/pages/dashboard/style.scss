@@ -41,6 +41,11 @@
       .titleTool {
         @include titleComponent;
       }
+      .selectDays {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+      }
       .gridView,
       .historical,
       .anchorView {
@@ -57,8 +62,8 @@
       }
     }
     .vehicleList {
-      margin-top: 24px;
-      padding-top: 24px;
+      margin-top: 16px;
+      padding-top: 12px;
       border-top: 2px solid #f0f0f0;
       .titleVehicle {
         @include titleComponent;

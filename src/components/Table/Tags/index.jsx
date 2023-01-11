@@ -28,7 +28,9 @@ export const TagsTable = ({ dataTag, newValue }) => {
       setDataSources([...dataSource, newValue]);
     }
   }, [newValue]);
-
+  // get name tag push to array
+  const nameTag = dataSource.map((item) => item.value);
+  console.log('nameTag', nameTag);
   const onSelectChange = (newSelectedRowKeys) => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);

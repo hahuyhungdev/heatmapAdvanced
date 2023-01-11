@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
 import './style.scss';
 
 import { Select, Space, Table } from 'antd';
-import { SelectOption } from 'components';
-import { IconStatus } from 'components/Icons';
-import { IconForklift, IconGroup, IconPerson } from 'components/Icons';
-import React, { memo, useState } from 'react';
+import { IconForklift, IconGroup, IconPerson, IconStatus } from 'components/Icons';
+import { sidebarRightSelector } from 'config/sidebarRightSlice';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const columns = [
   {
@@ -104,10 +103,44 @@ export const dataVahicle = [
     createAt: '2021-02-05 08:28:36 ',
     updateAt: '2021-02-05 08:28:36 ',
   },
+  {
+    key: '8',
+    value: 'Demo tag 8',
+    label: 'forklift',
+    Icon: <IconForklift />,
+    status: true,
+    tag: 'Tag 08',
+    description: 'Description 01',
+    createAt: '2021-02-05 08:28:36 ',
+    updateAt: '2021-02-05 08:28:36 ',
+  },
+  {
+    key: '9',
+    value: 'Demo tag 9',
+    label: 'forklift',
+    Icon: <IconForklift />,
+    status: true,
+    tag: 'Tag 09',
+    description: 'Description 01',
+    createAt: '2021-02-05 08:28:36 ',
+    updateAt: '2021-02-05 08:28:36 ',
+  },
+  {
+    key: '10',
+    value: 'Demo tag 10',
+    label: 'forklift',
+    Icon: <IconForklift />,
+    status: true,
+    tag: 'Tag 10',
+    description: 'Description 01',
+    createAt: '2021-02-05 08:28:36 ',
+    updateAt: '2021-02-05 08:28:36 ',
+  },
 ];
 
 export const TableVehicle = () => {
   const [valueType, setValueType] = useState('');
+  const { isVisableLineTrace } = useSelector(sidebarRightSelector);
 
   const onFilterChange = (_, test) => {
     console.log(test.label);
@@ -141,7 +174,12 @@ export const TableVehicle = () => {
   return (
     <div className="tableVahicle">
       <Select options={dataSelect} placeholder="Select Tag" onChange={onFilterChange} />
-      <Table columns={columns} dataSource={dataFilter} pagination={false} scroll={{ y: 250 }} />
+      <Table
+        columns={columns}
+        dataSource={dataFilter}
+        pagination={false}
+        scroll={{ y: isVisableLineTrace ? 150 : 270 }}
+      />
     </div>
   );
 };

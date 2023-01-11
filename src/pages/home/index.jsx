@@ -19,7 +19,7 @@ export function Home() {
   const [data, setData] = useState('');
 
   const usersData = useSelector(getDataSelector);
-  // console.log("dataStore", usersData);
+  // console.log('dataStore', usersData);
 
   const handleChange = (data) => {
     // convert dataString to convert date to timestamp

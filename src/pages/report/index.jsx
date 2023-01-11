@@ -2,7 +2,9 @@
 import './style.scss';
 
 import { DatePicker } from 'antd';
+import { ButtonCustom } from 'components/Button';
 import { SelectOption } from 'components/Dropdown';
+import { IconDashboard, IconDownload } from 'components/Icons';
 // import RangePicker from 'components/RangePicker';
 import moment from 'moment';
 import React, { useState } from 'react';
@@ -29,8 +31,13 @@ export const Report = () => {
           onOk={onOk}
         />
       </div>
-
-      <SelectOption />
+      <div className="Devices">
+        <div className="span">Devices</div>
+        <SelectOption />
+      </div>
+      <ButtonCustom isIcon icon={<IconDownload />}>
+        Get file
+      </ButtonCustom>
     </div>
   );
 };

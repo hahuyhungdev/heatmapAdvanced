@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
+import sidebarRightReducer from 'features/other/sidebarRightSlice';
 
-// import dataReducer from './dataSlice';
-import sidebarRightReducer from './sidebarRightSlice';
+import dataReducer from './dataSlice';
 
 export const store = configureStore({
   reducer: {
-    // data: dataReducer,
+    data: dataReducer,
     sidebarRight: sidebarRightReducer,
   },
 });

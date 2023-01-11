@@ -4,7 +4,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import { DatePicker, Switch } from 'antd';
 import { ButtonCustom, ButtonGroup, PopupMap } from 'components';
 import { TableVehicle } from 'components/Table';
-import { sidebarRightSelector, toggleLineTrace } from 'config/sidebarRightSlice';
+import { sidebarRightSelector, toggleLineTrace } from 'features/other/sidebarRightSlice';
 import moment from 'moment';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

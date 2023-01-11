@@ -10,7 +10,8 @@
       "utils/*": ["utils/*"],
       "hooks/*": ["hooks/*"],
       "config/*": ["config/*"],
-      "assets/*": ["assets/*"]
+      "assets/*": ["assets/*"],
+      "features/*": ["features/*"]
     }
   }
 }

@@ -1,5 +1,6 @@
 export * from './IconDashboard';
 export * from './IconDevices';
+export * from './IconDownload';
 export * from './IconForklift';
 export * from './IconGroup';
 export * from './IconPerson';

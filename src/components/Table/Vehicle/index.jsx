@@ -2,7 +2,7 @@ import './style.scss';
 
 import { Select, Space, Table } from 'antd';
 import { IconForklift, IconGroup, IconPerson, IconStatus } from 'components/Icons';
-import { sidebarRightSelector } from 'config/sidebarRightSlice';
+import { sidebarRightSelector } from 'features/other/sidebarRightSlice';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 

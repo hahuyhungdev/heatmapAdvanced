@@ -1,0 +1,37 @@
+.antCustom {
+  .pagination {
+    .ant-pagination-item-active {
+      border-color: #a85f0a;
+      a {
+        color: #a85f0a;
+      }
+    }
+
+    .ant-pagination-item:hover {
+      border-color: #a85f0a;
+      a {
+        color: #a85f0a;
+      }
+    }
+
+    .ant-pagination-prev:hover {
+      border-color: #a85f0a;
+      a {
+        color: #a85f0a;
+      }
+    }
+    .ant-pagination-prev:hover button {
+      border-color: #a85f0a;
+      a {
+        color: #a85f0a;
+      }
+    }
+    .ant-pagination-prev:hover .ant-pagination-item-link {
+      color: #a85f0a;
+    }
+    .ant-pagination-next:hover .ant-pagination-item-link {
+      color: #a85f0a;
+      border-color: #a85f0a;
+    }
+  }
+}

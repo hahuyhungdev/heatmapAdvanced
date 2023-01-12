@@ -20,6 +20,7 @@ export function Page({ className, pageSize = 10, current, total, onChange }) {
     </div>
   );
 }
+//duasdhkasjdhkajs
 Page.propTypes = {
   pageSize: PropTypes.number,
   current: PropTypes.number,

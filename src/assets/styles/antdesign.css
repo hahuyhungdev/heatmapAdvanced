@@ -41,4 +41,25 @@
 .ant-select:not(.ant-select-customize-input) .ant-select-selector {
   min-width: 100px;
 }
+.ant-pagination-item-active,
+.ant-pagination-item:hover,
+.ant-pagination-item-active:hover {
+  border-color: #c17115;
+}
+.ant-pagination-item-active a {
+  color: #c17115 !important;
+}
+.ant-pagination-item-active:focus-visible a,
+.ant-pagination-item-active:hover a,
+.ant-pagination-item:hover a {
+  color: #c17115;
+}
+.ant-pagination-prev:hover .ant-pagination-item-link {
+  color: #a85f0a;
+  border-color: #a85f0a;
+}
+.ant-pagination-next:hover .ant-pagination-item-link {
+  color: #a85f0a;
+  border-color: #a85f0a;
+}
 /* end custon antd css */

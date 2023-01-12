@@ -1,10 +1,8 @@
 .layout {
-  // margin-top: 10px;
-  // display: flex;
-  // gap: 10px;
   .content {
     background-color: #f4efea;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 64px);
+    // height: 100vh;
     margin-right: 10px;
     z-index: 1;
     position: absolute;
@@ -58,7 +56,7 @@ header h1 {
 .sideBar {
   width: 56px;
   background-color: white;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 64px);
   z-index: 3;
   float: left;
   position: absolute;

@@ -73,7 +73,7 @@ const DevicesTable = ({ dataDevice, newDevice }) => {
       dataIndex: 'Icon',
       key: 'Icon',
       render: (text) => <a>{text}</a>,
-      width: 75,
+      width: 60,
     },
     {
       title: 'Name device',
@@ -111,14 +111,14 @@ const DevicesTable = ({ dataDevice, newDevice }) => {
       dataIndex: 'createAt',
       key: 'createAt',
       render: (text) => <a>{text}</a>,
-      width: 200,
+      width: 170,
     },
     {
       title: 'Update at',
       dataIndex: 'updateAt',
       key: 'updateAt',
       render: (text) => <a>{text}</a>,
-      width: 200,
+      width: 170,
     },
     {
       title: 'Action',
@@ -165,7 +165,6 @@ const DevicesTable = ({ dataDevice, newDevice }) => {
           onOpen={isModalConfirm}
         />
       )}
-      <br />
       {isModalEdit && (
         <PopupDevice
           onFinish={handleEdit}

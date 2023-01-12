@@ -1,3 +1,5 @@
+import './style.scss';
+
 import { Pagination } from 'antd';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';

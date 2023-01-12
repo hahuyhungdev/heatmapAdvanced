@@ -1,6 +1,7 @@
 .DevicesTable {
-  padding: 0px 24px !important;
+  // padding: 0px 24px !important;
   background-color: white;
+  border-radius: 2px;
   .action {
     display: flex;
     flex-direction: row;
@@ -13,5 +14,8 @@
       color: #a85f0a;
       cursor: pointer;
     }
+  }
+  .ant-table-wrapper {
+    padding: 0 24px;
   }
 }

@@ -146,7 +146,6 @@ export const TagsTable = ({ dataTag, newValue }) => {
           onOpen={isModalConfirm}
         />
       )}
-      <br />
       {isModalEdit && (
         <PopupTag
           onFinish={handleEdit}

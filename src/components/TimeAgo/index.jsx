@@ -8,7 +8,7 @@ export const TimeAgo = () => {
 
   // console.log("compare", inputDate);
   // convert timestamp to format date
-  const ConvertTimestamp = moment.unix(inputTimestamp).format('YYYY-MM-DD HH');
+  const ConvertTimestamp = moment.unix(inputTimestamp).format('YYYY-MM-DD HH-mm');
 
   // convert date to timestamp
   const convertDateToTimestamp = moment(inputDate, 'YYYY-MM-DD HH').unix();
@@ -22,6 +22,9 @@ export const TimeAgo = () => {
       setInputDate(values.datePicker.format('YYYY-MM-DD HH'));
     }
   };
+  console.log('inputTimestamp', inputTimestamp);
+  // convert timestamp to format date to inputTimestamp
+
   return (
     <div className="TimeAgo" style={{ margin: '20px' }}>
       <Form

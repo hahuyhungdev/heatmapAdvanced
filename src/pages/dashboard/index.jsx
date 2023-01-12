@@ -1,20 +1,18 @@
-import React from "react";
-import "./style.scss";
-import Background from "assets/images/background.png";
+import './style.scss';
+
+// eslint-disable-next-line no-unused-vars
+import Background from 'assets/images/background.png';
+import React from 'react';
+
+import SidebarRight from './sidebarRight';
+
 export const Dashboard = () => {
   return (
     <div className="dashboard">
       <div className="dashboardMap">
-        <img
-          src={Background}
-          alt="map"
-          style={{
-            width: "100%",
-            height: "90%",
-          }}
-        />
+        <img src={Background} alt="map" />
       </div>
-      <div className="toolDasdboard">daskdjaskldjaskldjklqwe</div>
+      <SidebarRight />
     </div>
   );
 };

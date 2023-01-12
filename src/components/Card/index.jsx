@@ -1,4 +1,5 @@
-import React, { memo } from "react";
+import PropTypes from 'prop-types';
+import React, { memo } from 'react';
 
 export const Card = ({ valueIncrease, handleIncrease }) => {
   // console.log("Card");
@@ -17,6 +18,10 @@ export const Card = ({ valueIncrease, handleIncrease }) => {
       </div>
     </div>
   );
+};
+Card.propTypes = {
+  valueIncrease: PropTypes.number,
+  handleIncrease: PropTypes.func,
 };
 
 export default memo(Card);

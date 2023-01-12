@@ -6,6 +6,7 @@ export function Page({ className, pageSize = 10, current, total, onChange }) {
   const _onChange = (page, pageSize) => {
     onChange?.(page, pageSize);
   };
+  // test
   return (
     <div className="antCustom">
       <Pagination

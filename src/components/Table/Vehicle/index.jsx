@@ -14,7 +14,7 @@ const columns = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Status',
+    title: <div style={{ textAlign: 'right' }}>Status</div>,
     dataIndex: 'status',
     key: 'status',
     render: (_, record) => (

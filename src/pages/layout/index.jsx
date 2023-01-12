@@ -43,7 +43,7 @@ export const Layout = () => {
   return (
     <div className="mainHome">
       <header className="header">
-        <title>Monitoring Dashboard</title>
+        <title>{dataNavigation.find((item) => item.path === location.pathname)?.name}</title>
         <h1 className="rtls ">RTLS SYSTEM</h1>
       </header>
       <div className="layout">
